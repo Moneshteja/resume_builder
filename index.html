@@ -23,35 +23,14 @@
         font-size: 1.2em;
     }
 
-    .container h1 {
+    .animated {
         font-size: 2.5em;
         font-weight: bold;
-        overflow: hidden; 
-        border-right: .15em solid orange; 
-        white-space: nowrap; 
-        margin: 0 auto; 
-        letter-spacing: .15em; 
-        animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite;
-    }
-
-    /* The typing effect */
-    @keyframes typing {
-      from { width: 0 }
-      to { width: 100% }
-    }
-
-    /* The typewriter cursor effect */
-    @keyframes blink-caret {
-      from, to { border-color: transparent }
-      50% { border-color: orange; }
-    }
-
-    .container p {
-        font-size: 1.5em;
+        visibility: hidden;
     }
 
     .resume-box {
-        display: inline-block;
+        display: none;
         margin-top: 20px;
         padding: 40px;
         background: green;
@@ -77,15 +56,25 @@
 </head>
 <body>
     <div class="container">
-        <h1>Welcome<br>
-        To<br>
-        Monesh's<br>
-        Resume<br>
-        Portal</h1>
+        <h1 class="animated" id="welcome">Welcome</h1>
+        <h1 class="animated" id="to">To</h1>
+        <h1 class="animated" id="monesh">Monesh's</h1>
+        <h1 class="animated" id="resume">Resume</h1>
+        <h1 class="animated" id="portal">Portal</h1>
         <p>Click on the link below to access my resume</p>
-        <div class="resume-box">
+        <div class="resume-box" id="resume-box">
             <a href="https://moneshteja.github.io/resume/MoneshTejaSanduru_2023 B.tech(cse).pdf" target="_blank">RESUME</a>
         </div>
     </div>
+    <script>
+    window.onload = function() {
+        let delay = 500; // 0.5 second delay for each line
+        let elements = ['welcome', 'to', 'monesh', 'resume', 'portal'];
+        elements.forEach((id, index) => {
+            setTimeout(() => document.getElementById(id).style.visibility = 'visible', delay * index);
+        });
+        setTimeout(() => document.getElementById('resume-box').style.display = 'inline-block', delay * elements.length);
+    };
+    </script>
 </body>
 </html>
