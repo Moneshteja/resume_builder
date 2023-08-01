@@ -78,26 +78,28 @@
     window.onload = function() {
         let delay = 100; // 0.1 second delay for each character
         let elements = ['welcome', 'to', 'monesh', 'resume', 'portal'];
+        let totalLength = 0;
 
         elements.forEach((id, index) => {
             let text = document.getElementById(id).innerText;
+            totalLength += text.length;
             document.getElementById(id).innerText = '';
             [...text].forEach((char, charIndex) => {
                 setTimeout(() => {
                     document.getElementById(id).innerText += char;
                     document.getElementById(id).style.opacity = '1';
-                }, delay * (index * text.length + charIndex));
+                }, delay * (totalLength - text.length + charIndex));
             });
         });
 
         setTimeout(() => {
             document.getElementById('instructions').style.visibility = 'visible';
             document.getElementById('instructions').style.opacity = '1';
-        }, delay * (10 * elements.join('').length + 1));
+        }, delay * totalLength + 1000);
 
         setTimeout(() => {
             document.getElementById('resume-box').style.display = 'inline-block';
-        }, delay * (10 * elements.join('').length + 2));
+        }, delay * totalLength + 2000);
     };
     </script>
 </body>
