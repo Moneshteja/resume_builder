@@ -78,28 +78,29 @@
     window.onload = function() {
         let delay = 100; // 0.1 second delay for each character
         let elements = ['welcome', 'to', 'monesh', 'resume', 'portal'];
-        let totalLength = 0;
+        let totalDelay = 0;
 
-        elements.forEach((id, index) => {
+        elements.forEach((id) => {
             let text = document.getElementById(id).innerText;
-            totalLength += text.length;
             document.getElementById(id).innerText = '';
             [...text].forEach((char, charIndex) => {
+                totalDelay += delay;
                 setTimeout(() => {
                     document.getElementById(id).innerText += char;
                     document.getElementById(id).style.opacity = '1';
-                }, delay * (totalLength - text.length + charIndex));
+                }, totalDelay);
             });
+            totalDelay += delay; // Adding extra delay after each element
         });
 
         setTimeout(() => {
             document.getElementById('instructions').style.visibility = 'visible';
             document.getElementById('instructions').style.opacity = '1';
-        }, delay * totalLength + 1000);
+        }, totalDelay);
 
         setTimeout(() => {
             document.getElementById('resume-box').style.display = 'inline-block';
-        }, delay * totalLength + 2000);
+        }, totalDelay + 500);
     };
     </script>
 </body>
