@@ -78,29 +78,28 @@
     window.onload = function() {
         let delay = 100; // 0.1 second delay for each character
         let elements = ['welcome', 'to', 'monesh', 'resume', 'portal'];
-        let totalDelay = 0;
+        let startDelay = 0;
 
         elements.forEach((id) => {
             let text = document.getElementById(id).innerText;
             document.getElementById(id).innerText = '';
             [...text].forEach((char, charIndex) => {
-                totalDelay += delay;
                 setTimeout(() => {
                     document.getElementById(id).innerText += char;
                     document.getElementById(id).style.opacity = '1';
-                }, totalDelay);
+                }, startDelay + delay * charIndex);
             });
-            totalDelay += delay * 8; // Adding extra delay after each element
+            startDelay += delay * text.length + 500; // 500 ms pause between words
         });
 
         setTimeout(() => {
             document.getElementById('instructions').style.visibility = 'visible';
             document.getElementById('instructions').style.opacity = '1';
-        }, totalDelay);
+        }, startDelay);
 
         setTimeout(() => {
             document.getElementById('resume-box').style.display = 'inline-block';
-        }, totalDelay + 500);
+        }, startDelay + 500);
     };
     </script>
 </body>
