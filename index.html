@@ -79,14 +79,14 @@
         let delay = 100; // 0.1 second delay for each character
         let elements = ['welcome', 'to', 'monesh', 'resume', 'portal'];
 
-        elements.forEach((id) => {
+        elements.forEach((id, index) => {
             let text = document.getElementById(id).innerText;
             document.getElementById(id).innerText = '';
             [...text].forEach((char, charIndex) => {
                 setTimeout(() => {
                     document.getElementById(id).innerText += char;
                     document.getElementById(id).style.opacity = '1';
-                }, delay * (id * 10 + charIndex));
+                }, delay * (index * 10 + charIndex));
             });
         });
 
