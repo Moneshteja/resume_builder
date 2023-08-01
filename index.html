@@ -20,30 +20,29 @@
         text-align: center;
         padding: 40px;
         max-width: 800px;
-        font-size: 1.2em;
     }
 
     .animated {
-        font-size: 2.5em;
         font-weight: bold;
         visibility: hidden;
     }
 
     .instructions {
-        font-size: 2em;  /* Increased the font size */
+        visibility: hidden;
+        opacity: 0;
+        transition: opacity 2s;
     }
 
     .resume-box {
         display: none;
         margin-top: 20px;
-        padding: 40px;
+        padding: 20px;
         background: green;
         border-radius: 5px;
         transition: all 0.5s ease;
     }
 
     a {
-        font-size: 2em;
         color: #1fa2ff;
         text-decoration: none;
         font-weight: bold;
@@ -65,7 +64,7 @@
         <h1 class="animated" id="monesh">Monesh's</h1>
         <h1 class="animated" id="resume">Resume</h1>
         <h1 class="animated" id="portal">Portal</h1>
-        <p class="instructions">Click on the link below to access my resume</p>
+        <p class="instructions" id="instructions">Click on the link below to access my resume</p>
         <div class="resume-box" id="resume-box">
             <a href="https://moneshteja.github.io/resume/MoneshTejaSanduru_2023 B.tech(cse).pdf" target="_blank">RESUME</a>
         </div>
@@ -77,6 +76,8 @@
         elements.forEach((id, index) => {
             setTimeout(() => document.getElementById(id).style.visibility = 'visible', delay * index);
         });
+        setTimeout(() => document.getElementById('instructions').style.visibility = 'visible', delay * elements.length);
+        setTimeout(() => document.getElementById('instructions').style.opacity = '1', delay * elements.length);
         setTimeout(() => document.getElementById('resume-box').style.display = 'inline-block', delay * elements.length);
     };
     </script>
