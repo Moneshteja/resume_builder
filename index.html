@@ -28,7 +28,6 @@
     .animated {
         font-weight: bold;
         opacity: 0;
-        transition: opacity 0.5s ease;
     }
 
     .instructions {
@@ -64,11 +63,11 @@
 </head>
 <body>
     <div class="container">
-        <h1 class="animated" id="welcome">Welcome</h1>
-        <h1 class="animated" id="to">To</h1>
-        <h1 class="animated" id="monesh">Monesh's</h1>
-        <h1 class="animated" id="resume">Resume</h1>
-        <h1 class="animated" id="portal">Portal</h1>
+        <h1 class="animated" id="welcome"></h1>
+        <h1 class="animated" id="to"></h1>
+        <h1 class="animated" id="monesh"></h1>
+        <h1 class="animated" id="resume"></h1>
+        <h1 class="animated" id="portal"></h1>
         <p class="instructions" id="instructions">Click on the box below<br>to get my resume</p>
         <div class="resume-box" id="resume-box">
             <a href="https://moneshteja.github.io/resume/MoneshTejaSanduru_2023 B.tech(cse).pdf" target="_blank">RESUME</a>
@@ -77,38 +76,29 @@
     <script>
     window.onload = function() {
         let delay = 100; // 0.1 second delay for each character
+        let elements = ['Welcome', 'To', "Monesh's", 'Resume', 'Portal'];
+        let elementIDs = ['welcome', 'to', 'monesh', 'resume', 'portal'];
+        let totalDelay = 0;
 
-        const typeText = (id, callback) => {
-            let text = document.getElementById(id).innerText;
-            document.getElementById(id).innerText = '';
+        elements.forEach((text, index) => {
             [...text].forEach((char, charIndex) => {
+                totalDelay += delay;
                 setTimeout(() => {
-                    document.getElementById(id).innerText += char;
-                    document.getElementById(id).style.opacity = '1';
-                    if(charIndex === text.length - 1 && callback) {
-                        callback();
-                    }
-                }, delay * charIndex);
+                    document.getElementById(elementIDs[index]).innerText += char;
+                    document.getElementById(elementIDs[index]).style.opacity = '1';
+                }, totalDelay);
             });
-        };
-        
-        const elements = ['welcome', 'to', 'monesh', 'resume', 'portal'];
+            totalDelay += delay * 10; // Adding extra delay after each element
+        });
 
-        const typeAllText = (index = 0) => {
-            if (index < elements.length) {
-                typeText(elements[index], () => {
-                    typeAllText(index + 1);
-                });
-            } else {
-                setTimeout(() => {
-                    document.getElementById('instructions').style.visibility = 'visible';
-                    document.getElementById('instructions').style.opacity = '1';
-                    document.getElementById('resume-box').style.display = 'inline-block';
-                }, delay);
-            }
-        };
+        setTimeout(() => {
+            document.getElementById('instructions').style.visibility = 'visible';
+            document.getElementById('instructions').style.opacity = '1';
+        }, totalDelay);
 
-        typeAllText();
+        setTimeout(() => {
+            document.getElementById('resume-box').style.display = 'inline-block';
+        }, totalDelay + 500);
     };
     </script>
 </body>
