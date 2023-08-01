@@ -75,23 +75,25 @@
     </div>
     <script>
     window.onload = function() {
-        let delay = 500; // 0.5 second delay for each line
+        let delay = 100; // 0.1 second delay for each character
         let elements = ['welcome', 'to', 'monesh', 'resume', 'portal'];
         elements.forEach((id, index) => {
-            setTimeout(() => {
-                document.getElementById(id).style.visibility = 'visible';
-                document.getElementById(id).scrollIntoView({behavior: "smooth"});
-            }, delay * index);
+            let text = document.getElementById(id).innerText;
+            document.getElementById(id).innerText = '';
+            document.getElementById(id).style.visibility = 'visible';
+            [...text].forEach((char, charIndex) => {
+                setTimeout(() => {
+                    document.getElementById(id).innerText += char;
+                }, delay * (index * 10 + charIndex));
+            });
         });
         setTimeout(() => {
             document.getElementById('instructions').style.visibility = 'visible';
             document.getElementById('instructions').style.opacity = '1';
-            document.getElementById('instructions').scrollIntoView({behavior: "smooth"});
-        }, delay * elements.length);
+        }, delay * (10 * elements.length + 1));
         setTimeout(() => {
             document.getElementById('resume-box').style.display = 'inline-block';
-            document.getElementById('resume-box').scrollIntoView({behavior: "smooth"});
-        }, delay * elements.length + delay);
+        }, delay * (10 * elements.length + 2));
     };
     </script>
 </body>
