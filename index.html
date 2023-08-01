@@ -77,29 +77,38 @@
     <script>
     window.onload = function() {
         let delay = 100; // 0.1 second delay for each character
-        let elements = ['welcome', 'to', 'monesh', 'resume', 'portal'];
-        let startDelay = 0;
 
-        elements.forEach((id) => {
+        const typeText = (id, callback) => {
             let text = document.getElementById(id).innerText;
             document.getElementById(id).innerText = '';
             [...text].forEach((char, charIndex) => {
                 setTimeout(() => {
                     document.getElementById(id).innerText += char;
                     document.getElementById(id).style.opacity = '1';
-                }, startDelay + delay * charIndex);
+                    if(charIndex === text.length - 1 && callback) {
+                        callback();
+                    }
+                }, delay * charIndex);
             });
-            startDelay += delay * text.length + 500; // 500 ms pause between words
-        });
+        };
+        
+        const elements = ['welcome', 'to', 'monesh', 'resume', 'portal'];
 
-        setTimeout(() => {
-            document.getElementById('instructions').style.visibility = 'visible';
-            document.getElementById('instructions').style.opacity = '1';
-        }, startDelay);
+        const typeAllText = (index = 0) => {
+            if (index < elements.length) {
+                typeText(elements[index], () => {
+                    typeAllText(index + 1);
+                });
+            } else {
+                setTimeout(() => {
+                    document.getElementById('instructions').style.visibility = 'visible';
+                    document.getElementById('instructions').style.opacity = '1';
+                    document.getElementById('resume-box').style.display = 'inline-block';
+                }, delay);
+            }
+        };
 
-        setTimeout(() => {
-            document.getElementById('resume-box').style.display = 'inline-block';
-        }, startDelay + 500);
+        typeAllText();
     };
     </script>
 </body>
