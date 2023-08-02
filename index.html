@@ -104,7 +104,7 @@
         document.getElementById('download-link').addEventListener('click', function(e) {
             e.preventDefault();
             if (failedAttempts >= 3) {
-                alert("Too many failed attempts. Please refresh the page.");
+                alert("Too many failed attempts. Sorry we are not going to allow you to access this");
                 return;
             }
             let password = prompt("Enter password");
