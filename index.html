@@ -79,6 +79,7 @@
         let elements = ['Welcome', 'To', "Monesh's", 'Resume', 'Portal'];
         let elementIDs = ['welcome', 'to', 'monesh', 'resume', 'portal'];
         let totalDelay = 0;
+        let failedAttempts = 0;
 
         elements.forEach((text, index) => {
             [...text].forEach((char, charIndex) => {
@@ -102,11 +103,19 @@
 
         document.getElementById('download-link').addEventListener('click', function(e) {
             e.preventDefault();
+            if (failedAttempts >= 3) {
+                alert("Too many failed attempts. Please refresh the page.");
+                return;
+            }
             let password = prompt("Enter password");
             if (password === "1234") { // replace "1234" with your password
                 window.open('https://moneshteja.github.io/resume/MoneshTejaSanduru_2023 B.tech(cse).pdf');
             } else {
                 alert("Incorrect password");
+                failedAttempts++;
+                if (failedAttempts >= 3) {
+                    alert("Too many failed attempts. Please refresh the page.");
+                }
             }
         });
     };
