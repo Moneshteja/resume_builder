@@ -113,6 +113,9 @@
             } else {
                 alert("Incorrect password");
                 failedAttempts++;
+                if (failedAttempts >= 3) {
+                    alert("Access denied");
+                }
             }
         });
     };
