@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Monesh's online resume">
 
-  <link rel="icon" href="favicon.ico" type="image/x-icon">  
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
 
   <title>Monesh's Resume</title>
 
@@ -72,20 +72,52 @@
 
   <script>
 
-    const welcomeEl = document.querySelector('.welcome');
-    welcomeEl.style.opacity = 1;
+    // Fade in text
+    const fadeIn = (element, time) => {
+      element.style.opacity = 0;
 
-    setTimeout(() => {
-      document.querySelector('.resume-box').style.display = 'block';
-    }, 1000);
+      const interval = setInterval(() => {
+        element.style.opacity = +element.style.opacity + 0.05;
 
+        if (element.style.opacity >= 1) {
+          clearInterval(interval);
+        }
+      }, time);
+    }
+
+    // Fade in welcome text
+    fadeIn(document.querySelector('.welcome'), 50);
+
+    // Show resume box
+    const showBox = (element, delay) => {
+      setTimeout(() => {
+        element.style.display = 'block';
+      }, delay);
+    }
+
+    showBox(document.querySelector('.resume-box'), 1000);
+
+    // Track failed attempts
+    let failedAttempts = 0;
+
+    // Resume box click handler
     document.querySelector('.resume-link').addEventListener('click', () => {
+
       const pwd = prompt('Enter password');
-      if(pwd === '1234') {
-        window.open('/resume.pdf');  
+
+      if (pwd === '1234') {
+        window.open('/resume.pdf');
+
       } else {
+        failedAttempts++;
         alert('Incorrect password');
+
+        if (failedAttempts >= 3) {
+          alert("Access denied");
+          return;
+        }
       }
+
     });
 
   </script>
