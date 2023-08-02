@@ -1,124 +1,95 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-    <title>Monesh's Resume</title>
-    <style>
-    html {
-        scroll-behavior: smooth;
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Monesh's online resume">
+
+  <link rel="icon" href="favicon.ico" type="image/x-icon">  
+
+  <title>Monesh's Resume</title>
+
+  <style>
+    :root {
+      --primary-color: #1fa2ff;
     }
+
     body {
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        background: linear-gradient(to right, #1fa2ff, #12d8fa, #a6ffcb);
-        color: white;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        margin: 0;
-        padding: 0;
-        transition: all 0.5s ease;
+      font-family: Arial;
+      background: linear-gradient(to right, var(--primary-color), #12d8fa, #a6ffcb);
+      color: white;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      height: 100vh;
     }
 
-    .container {
-        text-align: center;
-        padding: 40px;
-        max-width: 800px;
-    }
-
-    .animated {
-        font-weight: bold;
-        opacity: 0;
-    }
-
-    .instructions {
-        visibility: hidden;
-        opacity: 0;
-        transition: opacity 2s;
-        font-size: 1.5em; /* increased font size */
+    .welcome {
+      opacity: 0;
+      transition: opacity 0.5s ease;
     }
 
     .resume-box {
-        display: none;
-        margin-top: 20px;
-        padding: 20px;
-        background: green;
-        border-radius: 5px;
-        transition: all 0.5s ease;
-    }
-
-    a {
-        color: #1fa2ff;
-        text-decoration: none;
-        font-weight: bold;
+      display: none;
+      padding: 20px;
+      background: green;
+      border-radius: 5px;
+      transition: background 0.5s;
     }
 
     .resume-box:hover {
-        background: blue;
+      background: blue;
     }
 
-    .resume-box:hover a {
-        color: white;
-    }
-    </style>
+  </style>
+
 </head>
+
 <body>
-    <div class="container">
-        <h1 class="animated" id="welcome"></h1>
-        <h1 class="animated" id="to"></h1>
-        <h1 class="animated" id="monesh"></h1>
-        <h1 class="animated" id="resume"></h1>
-        <h1 class="animated" id="portal"></h1>
-        <p class="instructions" id="instructions">Click below to get my resume</p>
-        <div class="resume-box" id="resume-box">
-            <a href="#" id="download-link">RESUME</a>
-        </div>
+
+  <header>
+    <h1>Monesh's Resume</h1>
+  </header>
+
+  <main>
+
+    <div class="welcome">
+      <h2>Welcome to my resume!</h2>
+      <p>Click below to view</p>
     </div>
-    <script>
-    window.onload = function() {
-        let delay = 50; // 0.05 second delay for each character
-        let elements = ['Welcome', 'To', "Monesh's", 'Resume', 'Portal'];
-        let elementIDs = ['welcome', 'to', 'monesh', 'resume', 'portal'];
-        let totalDelay = 0;
-        let failedAttempts = 0;
 
-        elements.forEach((text, index) => {
-            [...text].forEach((char, charIndex) => {
-                totalDelay += delay;
-                setTimeout(() => {
-                    document.getElementById(elementIDs[index]).innerText += char;
-                    document.getElementById(elementIDs[index]).style.opacity = '1';
-                }, totalDelay);
-            });
-            totalDelay += delay * 5; // Adding extra delay after each element
-        });
+    <div class="resume-box">
 
-        setTimeout(() => {
-            document.getElementById('instructions').style.visibility = 'visible';
-            document.getElementById('instructions').style.opacity = '1';
-        }, totalDelay);
+      <a href="#" class="resume-link">
+        View Resume
+      </a>
 
-        setTimeout(() => {
-            document.getElementById('resume-box').style.display = 'inline-block';
-        }, totalDelay + 250);
+    </div>
 
-        document.getElementById('download-link').addEventListener('click', function(e) {
-            e.preventDefault();
-            if (failedAttempts >= 3) {
-                alert("Access denied");
-                return;
-            }
-            let password = prompt("Enter password");
-            if (password === "1234") { // replace "1234" with your password
-                window.open('https://moneshteja.github.io/resume/MoneshTejaSanduru_2023 B.tech(cse).pdf');
-            } else {
-                alert("Incorrect password");
-                failedAttempts++;
-                if (failedAttempts >= 3) {
-                    alert("Access denied");
-                }
-            }
-        });
-    };
-    </script>
+  </main>
+
+  <script>
+
+    const welcomeEl = document.querySelector('.welcome');
+    welcomeEl.style.opacity = 1;
+
+    setTimeout(() => {
+      document.querySelector('.resume-box').style.display = 'block';
+    }, 1000);
+
+    document.querySelector('.resume-link').addEventListener('click', () => {
+      const pwd = prompt('Enter password');
+      if(pwd === '1234') {
+        window.open('/resume.pdf');  
+      } else {
+        alert('Incorrect password');
+      }
+    });
+
+  </script>
+
 </body>
+
 </html>
