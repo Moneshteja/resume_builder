@@ -4,20 +4,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Monesh's online resume">
-
-  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <meta name="description" content="Monesh's Resume">
 
   <title>Monesh's Resume</title>
 
   <style>
-    :root {
-      --primary-color: #1fa2ff;
-    }
-
     body {
       font-family: Arial;
-      background: linear-gradient(to right, var(--primary-color), #12d8fa, #a6ffcb);
+      background: linear-gradient(#1fa2ff, #12d8fa, #a6ffcb);
       color: white;
       margin: 0;
       display: flex;
@@ -28,17 +22,17 @@
 
     .welcome {
       opacity: 0;
-      transition: opacity 0.5s ease;
+      transition: opacity 0.5s;
     }
-
+    
     .resume-box {
-      display: none;
+      display: none; 
       padding: 20px;
       background: green;
       border-radius: 5px;
       transition: background 0.5s;
     }
-
+    
     .resume-box:hover {
       background: blue;
     }
@@ -56,66 +50,60 @@
   <main>
 
     <div class="welcome">
-      <h2>Welcome to my resume!</h2>
-      <p>Click below to view</p>
+      <h2>Welcome!</h2>
+      <p>View my resume:</p>
     </div>
 
     <div class="resume-box">
-
-      <a href="#" class="resume-link">
-        View Resume
-      </a>
-
+      <a href="#" class="resume-link">View Resume</a>
     </div>
 
   </main>
 
   <script>
 
-    // Fade in text
     const fadeIn = (element, time) => {
-      element.style.opacity = 0;
-
+      let opacity = 0;
+      
       const interval = setInterval(() => {
-        element.style.opacity = +element.style.opacity + 0.05;
-
-        if (element.style.opacity >= 1) {
+        opacity += 0.05;
+        element.style.opacity = opacity;
+        
+        if(opacity >= 1) {
           clearInterval(interval);
         }
       }, time);
     }
-
-    // Fade in welcome text
-    fadeIn(document.querySelector('.welcome'), 50);
-
-    // Show resume box
+    
     const showBox = (element, delay) => {
       setTimeout(() => {
         element.style.display = 'block';
       }, delay);
     }
-
-    showBox(document.querySelector('.resume-box'), 1000);
-
-    // Track failed attempts
+    
+    const resumeLink = 'https://example.com/resume.pdf';
+    
     let failedAttempts = 0;
 
-    // Resume box click handler
+    fadeIn(document.querySelector('.welcome'), 50);
+    
+    showBox(document.querySelector('.resume-box'), 1000);
+
     document.querySelector('.resume-link').addEventListener('click', () => {
+    
+      if(failedAttempts >= 3) {
+        alert('Access blocked');
+        return;
+      }
 
       const pwd = prompt('Enter password');
 
-      if (pwd === '1234') {
-        window.open('/resume.pdf');
-
+      if(pwd === '1234') {
+        window.open(resumeLink);
+      
       } else {
         failedAttempts++;
         alert('Incorrect password');
-
-        if (failedAttempts >= 3) {
-          alert("Access denied");
-          return;
-        }
       }
 
     });
