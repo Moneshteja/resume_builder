@@ -70,7 +70,7 @@
         <h1 class="animated" id="portal"></h1>
         <p class="instructions" id="instructions">Click below to get my resume</p>
         <div class="resume-box" id="resume-box">
-            <a href="https://moneshteja.github.io/resume/MoneshTejaSanduru_2023 B.tech(cse).pdf" target="_blank">RESUME</a>
+            <a href="#" id="download-link">RESUME</a>
         </div>
     </div>
     <script>
@@ -99,6 +99,16 @@
         setTimeout(() => {
             document.getElementById('resume-box').style.display = 'inline-block';
         }, totalDelay + 250);
+
+        document.getElementById('download-link').addEventListener('click', function(e) {
+            e.preventDefault();
+            let password = prompt("Enter password");
+            if (password === "1234") { // replace "1234" with your password
+                window.open('https://moneshteja.github.io/resume/MoneshTejaSanduru_2023 B.tech(cse).pdf');
+            } else {
+                alert("Incorrect password");
+            }
+        });
     };
     </script>
 </body>
