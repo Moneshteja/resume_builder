@@ -1,115 +1,87 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Monesh's Resume">
-
-  <title>Monesh's Resume</title>
-
-  <style>
+    <title>Monesh's Resume</title>
+    <style>
+    html {
+        scroll-behavior: smooth;
+    }
     body {
-      font-family: Arial;
-      background: linear-gradient(#1fa2ff, #12d8fa, #a6ffcb);
-      color: white;
-      margin: 0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      height: 100vh;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(to right, #1fa2ff, #12d8fa, #a6ffcb); /* Desktop background */
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        padding: 0;
+        transition: all 0.5s ease;
     }
 
-    .welcome {
-      opacity: 0;
-      transition: opacity 0.5s;
-    }
-    
-    .resume-box {
-      display: none; 
-      padding: 20px;
-      background: green;
-      border-radius: 5px;
-      transition: background 0.5s;
-    }
-    
-    .resume-box:hover {
-      background: blue;
-    }
-
-  </style>
-
-</head>
-
-<body>
-
-  <header>
-    <h1>Monesh's Resume</h1>
-  </header>
-
-  <main>
-
-    <div class="welcome">
-      <h2>Welcome!</h2>
-      <p>View my resume:</p>
-    </div>
-
-    <div class="resume-box">
-      <a href="#" class="resume-link">View Resume</a>
-    </div>
-
-  </main>
-
-  <script>
-
-    const fadeIn = (element, time) => {
-      let opacity = 0;
-      
-      const interval = setInterval(() => {
-        opacity += 0.05;
-        element.style.opacity = opacity;
-        
-        if(opacity >= 1) {
-          clearInterval(interval);
+    /* Mobile styles */
+    @media (max-width: 768px) { /* This will apply if the viewing area is smaller than 768 pixels */
+        body {
+            background: linear-gradient(to right, #a6ffcb, #12d8fa, #1fa2ff); /* Mobile background */
         }
-      }, time);
     }
-    
-    const showBox = (element, delay) => {
-      setTimeout(() => {
-        element.style.display = 'block';
-      }, delay);
+
+    .container {
+        text-align: center;
+        padding: 40px;
+        max-width: 800px;
     }
-    
-    const resumeLink = 'https://example.com/resume.pdf';
-    
-    let failedAttempts = 0;
 
-    fadeIn(document.querySelector('.welcome'), 50);
-    
-    showBox(document.querySelector('.resume-box'), 1000);
+    .animated {
+        font-weight: bold;
+        opacity: 0;
+    }
 
-    document.querySelector('.resume-link').addEventListener('click', () => {
-    
-      if(failedAttempts >= 3) {
-        alert('Access blocked');
-        return;
-      }
+    .instructions {
+        visibility: hidden;
+        opacity: 0;
+        transition: opacity 2s;
+        font-size: 1.5em; /* increased font size */
+    }
 
-      const pwd = prompt('Enter password');
+    .resume-box {
+        display: none;
+        margin-top: 20px;
+        padding: 20px;
+        background: green;
+        border-radius: 5px;
+        transition: all 0.5s ease;
+    }
 
-      if(pwd === '1234') {
-        window.open(resumeLink);
-      
-      } else {
-        failedAttempts++;
-        alert('Incorrect password');
-      }
+    a {
+        color: #1fa2ff;
+        text-decoration: none;
+        font-weight: bold;
+    }
 
-    });
+    .resume-box:hover {
+        background: blue;
+    }
 
-  </script>
-
+    .resume-box:hover a {
+        color: white;
+    }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="animated" id="welcome"></h1>
+        <h1 class="animated" id="to"></h1>
+        <h1 class="animated" id="monesh"></h1>
+        <h1 class="animated" id="resume"></h1>
+        <h1 class="animated" id="portal"></h1>
+        <p class="instructions" id="instructions">Click below to get my resume</p>
+        <div class="resume-box" id="resume-box">
+            <a href="#" id="download-link">RESUME</a>
+        </div>
+    </div>
+    <script>
+    /* ... your existing JavaScript code ... */
+    </script>
 </body>
-
 </html>
