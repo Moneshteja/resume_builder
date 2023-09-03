@@ -1,175 +1,52 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html>
 <head>
-<title>HOME Page</title>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<style type="text/css">
-  /* CSS Document */
-body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  background-color: #F3F3F3;
-}
+  <style>
+    @keyframes rotate {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
 
-.main {
-  width: 80%;
-  margin: 0 auto;
-  background-color: #FFFFFF;
-}
+    .orbit {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform-origin: center;
+      animation: rotate 10s linear infinite;
+    }
 
-.header {
-  background-color: #333333;
-  color: #FFFFFF;
-  padding: 20px;
-}
+    .earth {
+      width: 50px;
+      height: 50px;
+      background: linear-gradient(blue, green);
+      border-radius: 50%;
+    }
 
-.header_resize {
-  display: flex;
-  justify-content: space-between;
-}
+    .sun {
+      width: 100px;
+      height: 100px;
+      background-color: <link>#FF5722</link>; /* Yellowish Red color */
+      border-radius: 50%;
+    }
 
-.logo {
-  flex-basis: 70%;
-  animation: fade-in 2s;
-}
-
-.logo a {
-  color: #FFFFFF;
-  text-decoration: none;
-}
-
-.menu_nav ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-.menu_nav ul li {
-  display: inline-block;
-  margin-right: 20px;
-}
-
-.menu_nav ul li a {
-  color: #FFFFFF;
-  text-decoration: none;
-}
-
-.menu_nav ul li.active a {
-  color: #FF0000;
-}
-
-.slider {
-  width: 100%;
-  height: 320px;
-  overflow: hidden;
-}
-
-.content {
-  padding: 20px;
-}
-
-.sidebar {
-  padding: 20px;
-  background-color: #EFEFEF;
-}
-
-.footer {
-  background-color: #333333;
-  color: #FFFFFF;
-  text-align: center;
-  padding: 20px;
-}
-
-.article {
-  animation: fade-in 2s;
-}
-
-@keyframes fade-in {
-  0% {opacity: 0;}
-  100% {opacity: 1;}
-}
-
-</style>
+    .moon {
+      width: 20px;
+      height: 20px;
+      background-color: <link>gray</link>;
+      border-radius: 50%;
+      position: absolute;
+      top: -30px;
+      left: 60px;
+      animation: rotate 5s linear infinite;
+    }
+  </style>
 </head>
 <body>
-<div class="main">
-  <div class="header">
-    <div class="header_resize">
-      <div class="logo">
-        <h1><a href="index.html" class="style1">Data Isolation By Using Fine Grained Access Control Searchable Encryption
-</a></h1>
-      </div>
-      <div class="menu_nav">
-        <ul>
-          <li class="active"><a href="index.html"><span>Home</span> Page </a></li>
-          <li><a href="DataOwnerLogin.html">Data Owner </a></li>
-          <li><a href="EndUserLogin.html">End User</a></li>
-          <li><a href="CloudServerLogin.html">Cloud Server</a>
-        </ul>
-      </div>
-      <div class="clr"></div>
-      <div class="slider">
-        <div id="coin-slider"> 
-          <a href="#"><img src="https://via.placeholder.com/960x320" width="960" height="320" alt="" /> </a> 
-          <a href="#"><img src="https://via.placeholder.com/960x320/ff0000" width="960" height="320" alt="" /> </a> 
-          <a href="#"><img src="https://via.placeholder.com/960x320/00ff00" width="960" height="320" alt="" /> </a> 
-        </div>
-        <div class="clr"></div>
-      </div>
-      <div class="clr"></div>
+  <div class="orbit">
+    <div class="sun"></div>
+    <div class="earth">
+      <div class="moon"></div>
     </div>
   </div>
-  <div class="content">
-    <div class="content_resize">
-      <div class="mainbar">
-        <div class="article">
-          <h2><span>WELCOME TO HOME PAGE </span></h2>
-          <div class="clr"></div>
-         
-          <div class="post_content">
-            <p align="justify" class="style5">
-          </div>
-          <div class="clr"></div>
-        </div>
-        <p class="pages">&nbsp;</p>
-      </div>
-      <div class="sidebar">
-        <div class="searchform">
-          <form id="formsearch" name="formsearch" method="post" action="#">
-            <span>
-            <input name="editbox_search" class="editbox_search" id="editbox_search" maxlength="80" value="Search our ste:" type="text" />
-            </span>
-            <input name="button_search" src="images/search.gif" class="button_search" type="image" />
-          </form>
-        </div>
-        <div class="clr"></div>
-        <div class="gadget">
-          <h2 class="star"><span>Home</span> Menu</h2>
-          <div class="clr"></div>
-          <ul class="sb_menu">
-            <li><a href="index.html">Home Page </a></li>
-            <li><a href="DataOwnerLogin.html">Data Owner </a></li>
-            <li><a href="EndUserLogin.html">End User</a></li>
-            <li><a href="CloudServerLogin.html">Cloud Server</a></li>
-          </ul>
-        </div>
-        <div class="gadget"></div>
-      </div>
-      <div class="clr"></div>
-    </div>
-  </div>
-  <div class="fbg">
-    <div class="fbg_resize">
-      <div class="clr"></div>
-    </div>
-  </div>
-  <div class="footer">
-    <div class="footer_resize">
-      <div style="clear:both;"></div>
-    </div>
-  </div>
-</div>
-
 </body>
-  </html>
-                  
+</html
