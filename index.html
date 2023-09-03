@@ -2,6 +2,10 @@
 <html>
 <head>
   <style>
+    <link>body</link> {
+      background-color: black;
+    }
+
     @keyframes rotate {
       from { transform: rotate(0deg); }
       to { transform: rotate(360deg); }
@@ -22,17 +26,39 @@
       border-radius: 50%;
     }
 
+    .mars {
+      width: 40px;
+      height: 40px;
+      background-color: red;
+      border-radius: 50%;
+      position: absolute;
+      top: -80px;
+      left: 100px;
+      animation: rotate 7s linear infinite;
+    }
+
+    .venus {
+      width: 45px;
+      height: 45px;
+      background-color: #FFA500; /* Orange color */
+      border-radius: 50%;
+      position: absolute;
+      top: 120px;
+      left: -60px;
+      animation: rotate 12s linear infinite;
+    }
+
     .sun {
       width: 100px;
       height: 100px;
-      background-color: <link>#FF5722</link>; /* Yellowish Red color */
+      background-color: #FF5722; /* Yellowish Red color */
       border-radius: 50%;
     }
 
     .moon {
       width: 20px;
       height: 20px;
-      background-color: <link>gray</link>;
+      background-color: gray;
       border-radius: 50%;
       position: absolute;
       top: -30px;
@@ -47,6 +73,9 @@
     <div class="earth">
       <div class="moon"></div>
     </div>
+    <div class="mars"></div>
+    <div class="venus"></div>
   </div>
 </body>
 </html>
+  
