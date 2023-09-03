@@ -2,7 +2,7 @@
 <html>
 <head>
   <style>
-    <link>body</link> {
+    body {
       background-color: black;
     }
 
@@ -20,50 +20,43 @@
     }
 
     .earth {
-      width: 50px;
-      height: 50px;
-      background: linear-gradient(blue, green);
-      border-radius: 50%;
-    }
-
-    .mars {
-      width: 40px;
-      height: 40px;
-      background-color: red;
-      border-radius: 50%;
-      position: absolute;
-      top: -80px;
-      left: 100px;
-      animation: rotate 7s linear infinite;
-    }
-
-    .venus {
-      width: 45px;
-      height: 45px;
-      background-color: #FFA500; /* Orange color */
-      border-radius: 50%;
-      position: absolute;
-      top: 120px;
-      left: -60px;
-      animation: rotate 12s linear infinite;
-    }
-
-    .sun {
       width: 100px;
       height: 100px;
-      background-color: #FF5722; /* Yellowish Red color */
+      background-image: url('earth.png'); /* Replace 'earth.png' with your Earth image */
+      background-size: cover;
       border-radius: 50%;
+      position: relative;
     }
 
     .moon {
-      width: 20px;
-      height: 20px;
-      background-color: gray;
+      width: 40px;
+      height: 40px;
+      background-image: url('moon.png'); /* Replace 'moon.png' with your Moon image */
+      background-size: cover;
       border-radius: 50%;
       position: absolute;
-      top: -30px;
-      left: 60px;
+      top: 30px;
+      left: 150px;
       animation: rotate 5s linear infinite;
+    }
+
+    .sun {
+      width: 200px;
+      height: 200px;
+      background-image: url('sun.png'); /* Replace 'sun.png' with your Sun image */
+      background-size: cover;
+      border-radius: 50%;
+    }
+
+    .line {
+      width: 1px;
+      height: 100%;
+      background-color: white;
+      position: absolute;
+      top: 0;
+      left: 50%;
+      opacity: 0.5;
+      z-index: -1;
     }
   </style>
 </head>
@@ -73,9 +66,7 @@
     <div class="earth">
       <div class="moon"></div>
     </div>
-    <div class="mars"></div>
-    <div class="venus"></div>
+    <div class="line"></div>
   </div>
 </body>
 </html>
-  
