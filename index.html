@@ -1,72 +1,74 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <style>
-    body {
-      background-color: black;
-    }
+<html> 
+<head> 
+<style> 
 
-    @keyframes rotate {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
-    }
+.outer{  
+margin:auto; 
+height:300px; 
+width:400px; 
+border:2px solid black; 
+position:relative 
+} 
+p{ 
+margin-left:80px; 
+} 
+.in{ 
+margin-left:80px; 
+padding:10px 
+} 
+#bt{ 
+margin-top:20px; 
+position:absolute; 
+left:150px; 
+} 
+#bt:hover{ 
+background:green; 
+font-size:13px; 
+cursor:pointer; 
+color:white; 
+} 
+</style> 
+<script> 
+function fa(){ 
+if(a.value=="" || b.value==""){ 
+f() 
+document.getElementById("a").style.border="3px solid red" 
+document.getElementById("b").style.border="3px solid red" 
+bt.value="Pahila data tak" 
+} 
+else{ 
+document.getElementById("a").style.border="3px solid green" 
+document.getElementById("b").style.border="3px solid green" 
+bt.value="Ha thik ahe ata" 
+bt.style.left="120px"; 
+} 
+} 
+flag=1 
+function f(){ 
+if(flag==1){ 
+bt.style.left="210px" 
+flag=2 
+} 
+else if(flag==2){ 
+bt.style.left="80px" 
+flag=1 
+} 
+} 
+</script> 
+</head> 
+<body> 
+<div class="outer"> 
+<h1 style="text-align:center">Legend form</h1> 
+<p>Enter Id</p> 
+<input class="in" type="text" placeholder="Enter id" id="a"/> 
+<p>Enter Confirm Pass</p> 
+<input class="in" type="password" placeholder="Enter password" id="b"/> 
+<br> 
+<input type="submit" onmouseenter="fa()" onclick="alert('waaaa')" id="bt" /> 
 
-    .orbit {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform-origin: center;
-      animation: rotate 10s linear infinite;
-    }
+</div> 
 
-    .earth {
-      width: 100px;
-      height: 100px;
-      background-image: url('earth.png'); /* Replace 'earth.png' with your Earth image */
-      background-size: cover;
-      border-radius: 50%;
-      position: relative;
-    }
+</body> 
 
-    .moon {
-      width: 40px;
-      height: 40px;
-      background-image: url('moon.png'); /* Replace 'moon.png' with your Moon image */
-      background-size: cover;
-      border-radius: 50%;
-      position: absolute;
-      top: 30px;
-      left: 150px;
-      animation: rotate 5s linear infinite;
-    }
 
-    .sun {
-      width: 200px;
-      height: 200px;
-      background-image: url('sun.png'); /* Replace 'sun.png' with your Sun image */
-      background-size: cover;
-      border-radius: 50%;
-    }
-
-    .line {
-      width: 1px;
-      height: 100%;
-      background-color: white;
-      position: absolute;
-      top: 0;
-      left: 50%;
-      opacity: 0.5;
-      z-index: -1;
-    }
-  </style>
-</head>
-<body>
-  <div class="orbit">
-    <div class="sun"></div>
-    <div class="earth">
-      <div class="moon"></div>
-    </div>
-    <div class="line"></div>
-  </div>
-</body>
 </html>
