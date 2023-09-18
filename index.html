@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Monesh's Portfolio</title>
+    <title>Monesh's Resume</title>
     <style>
     html {
         scroll-behavior: smooth;
@@ -11,11 +11,12 @@
         background: linear-gradient(to right, #1fa2ff, #12d8fa, #a6ffcb);
         color: white;
         display: flex;
-        flex-direction: column;
+        justify-content: center;
         align-items: center;
-        height: 100%;
+        height: 100vh;
         margin: 0;
         padding: 0;
+        transition: all 0.5s ease;
     }
 
     .container {
@@ -30,27 +31,19 @@
     }
 
     .instructions {
-        font-size: 1.5em; 
+        visibility: hidden;
+        opacity: 0;
+        transition: opacity 2s;
+        font-size: 1.5em; /* increased font size */
     }
 
     .resume-box {
+        display: none;
         margin-top: 20px;
         padding: 20px;
         background: green;
         border-radius: 5px;
         transition: all 0.5s ease;
-    }
-
-    .resume-box:hover {
-        background: blue;
-    }
-
-    .portfolio-section {
-        margin-top: 30px;
-        padding: 30px;
-        background: rgba(0,0,0,0.2);
-        border-radius: 5px;
-        max-width: 800px;
     }
 
     a {
@@ -59,44 +52,73 @@
         font-weight: bold;
     }
 
+    .resume-box:hover {
+        background: blue;
+    }
+
+    .resume-box:hover a {
+        color: white;
+    }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1 class="animated" id="welcome">Welcome</h1>
-        <h1 class="animated" id="to">To</h1>
-        <h1 class="animated" id="monesh">Monesh's</h1>
-        <h1 class="animated" id="resume">Portfolio</h1>
-        <p class="instructions">A collection of my projects and achievements</p>
-        <div class="resume-box">
-            <a href="https://moneshteja.github.io/resume/MoneshTejaSanduru_2023 B.tech(cse).pdf" id="download-link">Download My Resume</a>
+        <h1 class="animated" id="welcome"></h1>
+        <h1 class="animated" id="to"></h1>
+        <h1 class="animated" id="monesh"></h1>
+        <h1 class="animated" id="resume"></h1>
+        <h1 class="animated" id="portal"></h1>
+        <p class="instructions" id="instructions">Click below to get my resume</p>
+        <div class="resume-box" id="resume-box">
+            <a href="#" id="download-link">RESUME</a>
         </div>
     </div>
+    <script>
+    window.onload = function() {
+        let delay = 50; // 0.05 second delay for each character
+        let elements = ['Welcome', 'To', "Monesh's", 'Resume', 'Portal'];
+        let elementIDs = ['welcome', 'to', 'monesh', 'resume', 'portal'];
+        let totalDelay = 0;
+        let failedAttempts = 0;
 
-    <!-- Add a portfolio section -->
-    <div class="portfolio-section">
-        <h2>My Projects</h2>
-        <ul>
-            <li><a href="#">Project 1</a></li>
-            <li><a href="#">Project 2</a></li>
-            <li><a href="#">Project 3</a></li>
-        </ul>
-    </div>
+        elements.forEach((text, index) => {
+            [...text].forEach((char, charIndex) => {
+                totalDelay += delay;
+                setTimeout(() => {
+                    document.getElementById(elementIDs[index]).innerText += char;
+                    document.getElementById(elementIDs[index]).style.opacity = '1';
+                }, totalDelay);
+            });
+            totalDelay += delay * 5; // Adding extra delay after each element
+        });
 
-    <div class="portfolio-section">
-        <h2>Skills</h2>
-        <ul>
-            <li>Web Development</li>
-            <li>Machine Learning</li>
-            <li>App Development</li>
-        </ul>
-    </div>
+        setTimeout(() => {
+            document.getElementById('instructions').style.visibility = 'visible';
+            document.getElementById('instructions').style.opacity = '1';
+        }, totalDelay);
 
-    <div class="portfolio-section">
-        <h2>Contact Me</h2>
-        <p>Email: moneshteja@example.com</p>
-        <p>LinkedIn: <a href="#">Monesh's LinkedIn</a></p>
-    </div>
+        setTimeout(() => {
+            document.getElementById('resume-box').style.display = 'inline-block';
+        }, totalDelay + 250);
 
+        document.getElementById('download-link').addEventListener('click', function(e) {
+            e.preventDefault();
+            if (failedAttempts >= 3) {
+                alert("Access denied");
+                return;
+            }
+            let password = prompt("Enter password");
+            if (password === "1234") { // replace "1234" with your password
+                window.open('https://moneshteja.github.io/resume/MoneshTejaSanduru_2023 B.tech(cse).pdf');
+            } else {
+                alert("Incorrect password");
+                failedAttempts++;
+                if (failedAttempts >= 3) {
+                    alert("Access denied");
+                }
+            }
+        });
+    };
+    </script>
 </body>
 </html>
