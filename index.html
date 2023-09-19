@@ -1,112 +1,28 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-    <title>Monesh's Portfolio</title>
-    <style>
-    html {
-        scroll-behavior: smooth;
-    }
-    body {
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        background: #2a2a2a;
-        color: white;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        height: 100%;
-        margin: 0;
-        padding: 0;
-    }
-
-    .container {
-        text-align: center;
-        padding: 40px;
-        max-width: 800px;
-    }
-
-    .animated {
-        font-weight: bold;
-        opacity: 0;
-    }
-
-    .instructions {
-        font-size: 1.5em; 
-    }
-
-    .resume-box {
-        margin-top: 20px;
-        padding: 20px;
-        background: blue;
-        border-radius: 5px;
-        transition: all 0.5s ease;
-    }
-
-    .resume-box:hover {
-        background: #4169E1;
-    }
-
-    .resume-box a {
-        color: green;
-    }
-
-    a {
-        color: #FF4500;
-        text-decoration: none;
-        font-weight: bold;
-    }
-
-    ul {
-        list-style-type: none;
-        padding-left: 0;
-    }
-    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code Generator</title>
+    <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
 </head>
+
 <body>
-    <div class="container">
-        <h1 class="animated" id="welcome"></h1>
-        <h1 class="animated" id="to"></h1>
-        <h1 class="animated" id="monesh"></h1>
-        <h1 class="animated" id="resume"></h1>
-        <p class="instructions">A collection of my projects and achievements</p>
-        <div class="resume-box">
-            <a href="https://moneshteja.github.io/resume/MoneshTejaSanduru_2023 B.tech(cse).pdf" id="download-link">Download My Resume</a>
-        </div>
-        <h2>My Projects</h2>
-        <ul>
-            <li><a href="https://moneshteja.github.io/engineering_project-/">My Engineering Project</a></li>
-            <li><a href="https://moneshteja.github.io/Resume./">My Resume Portal</a></li>
-            <li><a href="https://moneshteja.github.io/DynamicFieldValidationForm/">Dynamic Field validation Form</a></li>
-            <li><a href="https://github.com/Moneshteja/Python_projects">my python projects</a></li>
-            <li><a href="https://moneshteja.github.io/log-in-page/">log in page</a></li>
-            <li><a href="https://moneshteja.github.io/to-do-list/">To Do List</a></li>
-           <!-- 
-            <li><a href=""></a>a>text</li>
-            <li><a href=""></a>a>text</li>
-            -->
-        </ul>
-        <h2>Contact Me</h2>
-        <p>📧 Email: <a href="mailto:moneshtejasanduru@gmail.com">moneshtejasanduru@gmail.com</a></p>
-        <p>📞 Phone: +91 8555812436</p>
-        <p>🔗 LinkedIn: <a href="https://www.linkedin.com/in/monesh-teja-sanduru-849740290">Monesh's LinkedIn</a></p>
-    </div>
 
-    <script>
-        let delay = 50;
-        let elements = ['Welcome', 'To', "Monesh's", 'Portfolio'];
-        let elementIDs = ['welcome', 'to', 'monesh', 'resume'];
-        let totalDelay = 0;
+<input type="text" id="dataInput" placeholder="Enter URL or text for QR code">
+<button onclick="generateQRCode()">Generate QR Code</button>
 
-        elements.forEach((text, index) => {
-            [...text].forEach((char, charIndex) => {
-                totalDelay += delay;
-                setTimeout(() => {
-                    document.getElementById(elementIDs[index]).innerText += char;
-                    document.getElementById(elementIDs[index]).style.opacity = '1';
-                }, totalDelay);
-            });
-            totalDelay += delay * 5;
-        });
-    </script>
+<div id="qrcode"></div>
+
+<script>
+    function generateQRCode() {
+        const data = document.getElementById('dataInput').value;
+        document.getElementById('qrcode').innerHTML = "";  // Clear previous QR code
+        new QRCode(document.getElementById('qrcode'), data);
+    }
+</script>
 
 </body>
+
 </html>
