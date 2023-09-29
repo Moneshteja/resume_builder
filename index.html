@@ -1,125 +1,114 @@
-
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-    <title>Monesh's Resume</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monesh Teja Sanduru - Resume</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400&display=swap" rel="stylesheet">
+
     <style>
-    html {
-        scroll-behavior: smooth;
-    }
-    body {
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        background: linear-gradient(to right, #1fa2ff, #12d8fa, #a6ffcb);
-        color: white;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        margin: 0;
-        padding: 0;
-        transition: all 0.5s ease;
-    }
+        body {
+            padding: 20px;
+            font-family: Arial, sans-serif;
+            background-color: #F8F9FA;
+        }
 
-    .container {
-        text-align: center;
-        padding: 40px;
-        max-width: 800px;
-    }
+        header, section, footer {
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(30px);
+        }
 
-    .animated {
-        font-weight: bold;
-        opacity: 0;
-    }
+        h1, a {
+            font-family: 'Lato', sans-serif;
+        }
 
-    .instructions {
-        visibility: hidden;
-        opacity: 0;
-        transition: opacity 2s;
-        font-size: 1.5em; /* increased font size */
-    }
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
 
-    .resume-box {
-        display: none;
-        margin-top: 20px;
-        padding: 20px;
-        background: green;
-        border-radius: 5px;
-        transition: all 0.5s ease;
-    }
+        h1 {
+            color: #333;
+        }
 
-    a {
-        color: #1fa2ff;
-        text-decoration: none;
-        font-weight: bold;
-    }
+        .section-header {
+            background-color: #f5f5f5;
+            padding: 5px 15px;
+            margin-top: 20px;
+            font-weight: bold;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
 
-    .resume-box:hover {
-        background: blue;
-    }
+        a:hover {
+            text-decoration: underline;
+        }
 
-    .resume-box:hover a {
-        color: white;
-    }
+        ul {
+            list-style-type: none;
+        }
+
+        li {
+            padding: 8px 0;
+        }
+
+        ul li:hover {
+            background-color: #f5f5f5;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        footer {
+            margin-top: 40px;
+            font-family: 'Lato', sans-serif;
+        }
     </style>
 </head>
+
 <body>
-    <div class="container">
-        <h1 class="animated" id="welcome"></h1>
-        <h1 class="animated" id="to"></h1>
-        <h1 class="animated" id="monesh"></h1>
-        <h1 class="animated" id="resume"></h1>
-        <h1 class="animated" id="portal"></h1>
-        <p class="instructions" id="instructions">Click below to get my resume</p>
-        <div class="resume-box" id="resume-box">
-            <a href="#" id="download-link">RESUME</a>
-        </div>
-    </div>
+
+    <header>
+        <!-- ... existing header content ... -->
+    </header>
+
+    <!-- ... other sections ... -->
+
+    <footer>
+        <!-- ... existing footer content ... -->
+    </footer>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script>
-    window.onload = function() {
-        let delay = 50; // 0.05 second delay for each character
-        let elements = ['Welcome', 'To', "Monesh's", 'Resume', 'Portal'];
-        let elementIDs = ['welcome', 'to', 'monesh', 'resume', 'portal'];
-        let totalDelay = 0;
-        let failedAttempts = 0;
-
-        elements.forEach((text, index) => {
-            [...text].forEach((char, charIndex) => {
-                totalDelay += delay;
-                setTimeout(() => {
-                    document.getElementById(elementIDs[index]).innerText += char;
-                    document.getElementById(elementIDs[index]).style.opacity = '1';
-                }, totalDelay);
+        $(document).ready(function() {
+            $('header, section, footer').each(function(i) {
+                setTimeout(function() {
+                    $('header, section, footer').eq(i).addClass('fade-in');
+                }, 150 * (i+1));
             });
-            totalDelay += delay * 5; // Adding extra delay after each element
         });
 
-        setTimeout(() => {
-            document.getElementById('instructions').style.visibility = 'visible';
-            document.getElementById('instructions').style.opacity = '1';
-        }, totalDelay);
-
-        setTimeout(() => {
-            document.getElementById('resume-box').style.display = 'inline-block';
-        }, totalDelay + 250);
-
-        document.getElementById('download-link').addEventListener('click', function(e) {
-            e.preventDefault();
-            if (failedAttempts >= 3) {
-                alert("Access denied");
-                return;
+        // CSS class for fade-in effect
+        $('<style>').prop("type", "text/css").html(`
+            .fade-in {
+                opacity: 1 !important;
+                transform: translateY(0px) !important;
             }
-            let password = prompt("Enter password");
-            if (password === "1234") { // replace "1234" with your password
-                window.open('https://moneshteja.github.io/resumepdf/MoneshTejaSanduru_2023 B.tech(cse).pdf');
-            } else {
-                alert("Incorrect password");
-                failedAttempts++;
-                if (failedAttempts >= 3) {
-                    alert("Access denied");
-                }
-            }
-        });
-    };
+        `).appendTo("head");
     </script>
+
 </body>
-  </html>
+</html>
