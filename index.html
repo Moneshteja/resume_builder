@@ -19,20 +19,39 @@
         body {
             padding: 20px;
             font-family: Arial, sans-serif;
-            background-color: #F8F9FA;
+            background-image: linear-gradient(to bottom, #e0e7f3, #f8f9fa);
+            background-attachment: fixed;
         }
 
-        h1, a {
-            font-family: 'Lato', sans-serif;
+        h1, .section-header {
+            background: -webkit-linear-gradient(45deg, #9f7aea, #e573c4, #9f7aea);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            position: relative;
+            animation: shimmer 2s infinite;
         }
 
+        @keyframes shimmer {
+            0% {
+                background-position: -200% 0;
+            }
+            100% {
+                background-position: 200% 0;
+            }
+        }
+
+        /* Other styles */
         header {
             text-align: center;
             margin-bottom: 40px;
         }
 
-        h1 {
-            color: #333;
+        ul {
+            list-style-type: none;
+        }
+
+        li {
+            padding: 8px 0;
         }
 
         .section-header {
@@ -46,25 +65,6 @@
 
         a:hover {
             text-decoration: underline;
-        }
-
-        ul {
-            list-style-type: none;
-        }
-
-        li {
-            padding: 8px 0;
-        }
-
-        ul li:hover {
-            background-color: #f5f5f5;
-            border-radius: 5px;
-            transition: all 0.3s ease;
-        }
-
-        footer {
-            margin-top: 40px;
-            font-family: 'Lato', sans-serif;
         }
     </style>
 </head>
@@ -146,27 +146,13 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    
+
     <script>
-        $('header, section, footer').css('opacity', '0');
-
-        $(document).ready(function() {
-            $('header, section, footer').each(function(i) {
-                setTimeout(function() {
-                    $('header, section, footer').eq(i).addClass('fade-in');
-                }, 150 * (i+1));
-            });
+        $(window).scroll(function() {
+            var scrollTop = $(window).scrollTop();
+            $('body').css('background-position', '0 ' + (-scrollTop / 10) + 'px');
         });
-
-        // CSS class for fade-in effect
-        $('<style>').prop("type", "text/css").html(`
-            .fade-in {
-                opacity: 1 !important;
-                transform: translateY(0px) !important;
-            }
-        `).appendTo("head");
     </script>
 
 </body>
-                </html>
-            
+</html>
