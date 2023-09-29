@@ -1,158 +1,139 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Monesh Teja Sanduru - Resume</title>
-
-    <!-- Bootstrap CSS -->
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-
-    <!-- Google Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400&display=swap" rel="stylesheet">
-
+    <title>Monesh's Resume</title>
     <style>
-        body {
-            padding: 20px;
-            font-family: Arial, sans-serif;
-            background-image: linear-gradient(to bottom, #e0e7f3, #f8f9fa);
-            background-attachment: fixed;
-        }
+    html {
+        scroll-behavior: smooth;
+    }
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(to right, #1fa2ff, #12d8fa, #a6ffcb);
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        padding: 0;
+        transition: all 0.5s ease;
+    }
 
-        h1, .section-header {
-            background: -webkit-linear-gradient(45deg, #9f7aea, #e573c4, #9f7aea);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            position: relative;
-            animation: shimmer 2s infinite;
-        }
+    .container {
+        text-align: center;
+        padding: 40px;
+        max-width: 800px;
+    }
 
-        @keyframes shimmer {
-            0% {
-                background-position: -200% 0;
-            }
-            100% {
-                background-position: 200% 0;
-            }
-        }
+    .animated {
+        font-weight: bold;
+        opacity: 0;
+    }
 
-        /* Other styles */
-        header {
-            text-align: center;
-            margin-bottom: 40px;
-        }
+    .instructions {
+        visibility: hidden;
+        opacity: 0;
+        transition: opacity 2s;
+        font-size: 1.5em;
+    }
 
-        ul {
-            list-style-type: none;
-        }
+    .resume-box {
+        display: none;
+        margin-top: 20px;
+        padding: 20px;
+        background: green;
+        border-radius: 5px;
+        transition: all 0.5s ease;
+    }
 
-        li {
-            padding: 8px 0;
-        }
+    a {
+        color: #1fa2ff;
+        text-decoration: none;
+        font-weight: bold;
+    }
 
-        .section-header {
-            background-color: #f5f5f5;
-            padding: 5px 15px;
-            margin-top: 20px;
-            font-weight: bold;
-            border-radius: 5px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
+    .resume-box a {
+        display: inline-block;
+        margin: 0 10px;
+        padding: 5px 15px;
+        background: #1fa2ff;
+        border-radius: 3px;
+        transition: background 0.3s;
+    }
 
-        a:hover {
-            text-decoration: underline;
-        }
+    .resume-box a:hover {
+        background: #0056b3;
+    }
+
+    .resume-box:hover {
+        background: blue;
+    }
+
+    .resume-box:hover a {
+        color: white;
+    }
     </style>
 </head>
-
 <body>
-
-    <header>
-        <h1>MONESH TEJA SANDURU</h1>
-        <p>
-            <i class="fas fa-envelope"></i> <strong>Email:</strong> <a href="mailto:moneshtejasanduru@gmail.com">moneshtejasanduru@gmail.com</a><br>
-            <i class="fas fa-phone-alt"></i> <strong>Contact:</strong>+91 8555812436<br>
-            <i class="fab fa-linkedin"></i> <strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/monesh-teja-sanduru-849740290">my linked in profile</a>
-        </p>
-    </header>
-
-    <section>
-        <div class="section-header">Skills & Expertise</div>
-        <ul>
-            <li>Programming/Scripting Languages: Python, Java, C, JavaScript, Go, C#, Linux</li>
-            <li>Web Development frameworks: HTML, CSS, JS, Flask, Django, .Net, Angular JS, React</li>
-            <li>Databases: MySQL, DBMS, Cloud Computing</li>
-            <li>Version Control Systems: Proficient in using GitHub</li>
-            <li>Cybersecurity: Knowledge in Ethical Hacking</li>
-            <li>No-Code Developer - Zero Code Innovation, Sep 2023. Trained in application development without traditional coding.</li>
-            <li>Technical Skills: Problem solving, Object Oriented programming, Logical reasoning, Time Management.</li>
-        </ul>
-    </section>
-
-    <section>
-        <div class="section-header">Education</div>
-        <ul>
-            <li>Quba College of Engineering and Technology - B.tech 76.6% (first class with distinction) - 2019-2023</li>
-            <li>Sri Chaitanya Junior College - Intermediate 9.34 GPA - 2017-2019</li>
-            <li>Govt Model High School - 10th class 8.2 GPA - 2017</li>
-        </ul>
-    </section>
-
-    <section>
-        <div class="section-header">Projects</div>
-        <ul>
-            <li><strong>Major Engineering Project:</strong> Data isolation using fine-grained access for searchable encryption. Description: Led a team in developing an advanced project titled 'Data Isolation Using Fine-Grained Access for Searchable Encryption'. The project focused on creating a system for secure data isolation and retrieval through fine-grained access control.</li>
-            <li><strong> Phishing attacks:</strong> Conducted a controlled phishing simulation using a GitHub tool in a Linux environment to understand system vulnerabilities and boost cybersecurity knowledge.</li>
-            <li><strong> Creation of web pages and host them online:</strong> Designed and developed multiple web pages using HTML, CSS, and JavaScript. Successfully hosted them online, showcasing my skills in web development and understanding of web hosting processes.</li>
-            <li><strong> Python Projects:</strong> Phone Number Information Gatherer: Developed a tool to extract phone number details. Tkinter-based Simple Calculator: Crafted a GUI calculator for quick arithmetic operations. Ellipse Escape (Kivy Library): Designed an engaging mobile game experience. QR Code Generator: Implemented a tool for efficient QR code creation</li>
-        </ul>
-    </section>
-
-    <section>
-        <div class="section-header">Internships</div>
-        <ul>
-            <li>Python Developer Intern, Sun Square Technologies Pvt Ltd, Nellore. Learned and practiced Python programming, focusing on various key concepts like conditional statements, iterative statements, and more.</li>
-        </ul>
-    </section>
-
-    <section>
-        <div class="section-header">Awards & Certifications</div>
-        <ul>
-            <li>Received a reward for winning second prize in a city-level Mathematics competition - 2017</li>
-            <li>50+ certificates for continuous learning and skills development</li>
-            <li>First prize in a district-level Technical Quiz at DBS College - 2022</li>
-        </ul>
-    </section>
-
-    <section>
-        <div class="section-header">Languages</div>
-        <ul>
-            <li>Telugu</li>
-            <li>Hindi</li>
-            <li>English</li>
-        </ul>
-    </section>
-
-    <footer>
-        <p class="text-muted">Interests: Exploring new AI bots, surfing the internet, gaming, watching movies, series, listening to music.</p>
-    </footer>
-
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
+    <div class="container">
+        <h1 class="animated" id="welcome"></h1>
+        <h1 class="animated" id="to"></h1>
+        <h1 class="animated" id="monesh"></h1>
+        <h1 class="animated" id="resume"></h1>
+        <h1 class="animated" id="portal"></h1>
+        <p class="instructions" id="instructions">Click below to get my resume</p>
+        <div class="resume-box" id="resume-box">
+            <a href="#" id="download-link">Resume in PDF</a>
+            <a href="https://moneshteja.github.io/resume/" id="portal-link" target="_blank">Resume Portal</a>
+        </div>
+    </div>
     <script>
-        $(window).scroll(function() {
-            var scrollTop = $(window).scrollTop();
-            $('body').css('background-position', '0 ' + (-scrollTop / 10) + 'px');
-        });
-    </script>
+    window.onload = function() {
+        let delay = 50;
+        let elements = ['Welcome', 'To', "Monesh's", 'Resume', 'Portal'];
+        let elementIDs = ['welcome', 'to', 'monesh', 'resume', 'portal'];
+        let totalDelay = 0;
+        let failedAttempts = 0;
 
+        elements.forEach((text, index) => {
+            [...text].forEach((char, charIndex) => {
+                totalDelay += delay;
+                setTimeout(() => {
+                    document.getElementById(elementIDs[index]).innerText += char;
+                    document.getElementById(elementIDs[index]).style.opacity = '1';
+                }, totalDelay);
+            });
+            totalDelay += delay * 5;
+        });
+
+        setTimeout(() => {
+            document.getElementById('instructions').style.visibility = 'visible';
+            document.getElementById('instructions').style.opacity = '1';
+        }, totalDelay);
+
+        setTimeout(() => {
+            document.getElementById('resume-box').style.display = 'inline-block';
+        }, totalDelay + 250);
+
+        document.getElementById('download-link').addEventListener('click', function(e) {
+            e.preventDefault();
+            if (failedAttempts >= 3) {
+                alert("Access denied");
+                return;
+            }
+            let password = prompt("Enter password");
+            if (password === "1234") {
+                window.open('https://moneshteja.github.io/resumepdf/MoneshTejaSanduru_2023 B.tech(cse).pdf');
+            } else {
+                alert("Incorrect password");
+                failedAttempts++;
+                if (failedAttempts >= 3) {
+                    alert("Access denied");
+                }
+            }
+        });
+    };
+    </script>
 </body>
-</html>
+                </html>
+                
