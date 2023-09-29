@@ -5,10 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Monesh Teja Sanduru - Resume</title>
-    
+
     <!-- Bootstrap CSS -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    
+
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
@@ -20,12 +20,6 @@
             padding: 20px;
             font-family: Arial, sans-serif;
             background-color: #F8F9FA;
-        }
-
-        header, section, footer {
-            transition: all 0.3s ease;
-            opacity: 0;
-            transform: translateY(30px);
         }
 
         h1, a {
@@ -78,13 +72,73 @@
 <body>
 
     <header>
-        <!-- ... existing header content ... -->
+        <h1>MONESH TEJA SANDURU</h1>
+        <p>
+            <i class="fas fa-envelope"></i> <strong>Email:</strong> <a href="mailto:moneshtejasanduru@gmail.com">moneshtejasanduru@gmail.com</a><br>
+            <i class="fas fa-phone-alt"></i> <strong>Contact:</strong>+91 8555812436<br>
+            <i class="fab fa-linkedin"></i> <strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/monesh-teja-sanduru-849740290">my linked in profile</a>
+        </p>
     </header>
 
-    <!-- ... other sections ... -->
+    <section>
+        <div class="section-header">Skills & Expertise</div>
+        <ul>
+            <li>Programming/Scripting Languages: Python, Java, C, JavaScript, Go, C#, Linux</li>
+            <li>Web Development frameworks: HTML, CSS, JS, Flask, Django, .Net, Angular JS, React</li>
+            <li>Databases: MySQL, DBMS, Cloud Computing</li>
+            <li>Version Control Systems: Proficient in using GitHub</li>
+            <li>Cybersecurity: Knowledge in Ethical Hacking</li>
+            <li>No-Code Developer - Zero Code Innovation, Sep 2023. Trained in application development without traditional coding.</li>
+            <li>Technical Skills: Problem solving, Object Oriented programming, Logical reasoning, Time Management.</li>
+        </ul>
+    </section>
+
+    <section>
+        <div class="section-header">Education</div>
+        <ul>
+            <li>Quba College of Engineering and Technology - B.tech 76.6% (first class with distinction) - 2019-2023</li>
+            <li>Sri Chaitanya Junior College - Intermediate 9.34 GPA - 2017-2019</li>
+            <li>Govt Model High School - 10th class 8.2 GPA - 2017</li>
+        </ul>
+    </section>
+
+    <section>
+        <div class="section-header">Projects</div>
+        <ul>
+            <li><strong>Major Engineering Project:</strong> Data isolation using fine-grained access for searchable encryption. Description: Led a team in developing an advanced project titled 'Data Isolation Using Fine-Grained Access for Searchable Encryption'. The project focused on creating a system for secure data isolation and retrieval through fine-grained access control.</li>
+            <li><strong> Phishing attacks:</strong> Conducted a controlled phishing simulation using a GitHub tool in a Linux environment to understand system vulnerabilities and boost cybersecurity knowledge.</li>
+            <li><strong> Creation of web pages and host them online:</strong> Designed and developed multiple web pages using HTML, CSS, and JavaScript. Successfully hosted them online, showcasing my skills in web development and understanding of web hosting processes.</li>
+            <li><strong> Python Projects:</strong> Phone Number Information Gatherer: Developed a tool to extract phone number details. Tkinter-based Simple Calculator: Crafted a GUI calculator for quick arithmetic operations. Ellipse Escape (Kivy Library): Designed an engaging mobile game experience. QR Code Generator: Implemented a tool for efficient QR code creation</li>
+        </ul>
+    </section>
+
+    <section>
+        <div class="section-header">Internships</div>
+        <ul>
+            <li>Python Developer Intern, Sun Square Technologies Pvt Ltd, Nellore. Learned and practiced Python programming, focusing on various key concepts like conditional statements, iterative statements, and more.</li>
+        </ul>
+    </section>
+
+    <section>
+        <div class="section-header">Awards & Certifications</div>
+        <ul>
+            <li>Received a reward for winning second prize in a city-level Mathematics competition - 2017</li>
+            <li>50+ certificates for continuous learning and skills development</li>
+            <li>First prize in a district-level Technical Quiz at DBS College - 2022</li>
+        </ul>
+    </section>
+
+    <section>
+        <div class="section-header">Languages</div>
+        <ul>
+            <li>Telugu</li>
+            <li>Hindi</li>
+            <li>English</li>
+        </ul>
+    </section>
 
     <footer>
-        <!-- ... existing footer content ... -->
+        <p class="text-muted">Interests: Exploring new AI bots, surfing the internet, gaming, watching movies, series, listening to music.</p>
     </footer>
 
     <!-- Optional JavaScript -->
@@ -92,7 +146,10 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    
     <script>
+        $('header, section, footer').css('opacity', '0');
+
         $(document).ready(function() {
             $('header, section, footer').each(function(i) {
                 setTimeout(function() {
@@ -111,4 +168,5 @@
     </script>
 
 </body>
-</html>
+                </html>
+            
