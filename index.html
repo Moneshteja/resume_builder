@@ -4,7 +4,40 @@
 <head>
     <title>Monesh's Resume</title>
     <style>
-        /* ... Existing CSS ... */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(to right, #1fa2ff, #12d8fa, #a6ffcb);
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+            transition: all 0.5s ease;
+        }
+
+        .container {
+            text-align: center;
+            padding: 40px;
+            max-width: 800px;
+        }
+
+        .animated {
+            font-weight: bold;
+            opacity: 0;
+        }
+
+        .instructions {
+            visibility: hidden;
+            opacity: 0;
+            transition: opacity 2s;
+            font-size: 1.5em;
+        }
 
         .resume-box {
             display: none;
@@ -17,15 +50,42 @@
             align-items: center;
         }
 
+        a {
+            color: #1fa2ff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
         .resume-box a {
             display: inline-block;
             margin: 0 20px;
             margin-top: 10px;
             margin-bottom: 10px;
-            /* ... other styles ... */
+            padding: 5px 15px;
+            background: #1fa2ff;
+            border-radius: 3px;
+            transition: background 0.3s;
+            color: white;
         }
 
-        /* ... Rest of the CSS ... */
+        .resume-box a:hover {
+            background: #0056b3;
+        }
+
+        .resume-box:hover {
+            background: blue;
+        }
+
+        .resume-box:hover a {
+            color: white;
+        }
+
+        @media only screen and (max-width: 600px) {
+            /* This media query is for mobile screens */
+            .resume-box a {
+                margin: 10px 0; /* This stacks the buttons vertically with a margin in between */
+            }
+        }
     </style>
 </head>
 
