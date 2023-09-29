@@ -1,80 +1,93 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Monesh's Resume</title>
     <style>
-    html {
-        scroll-behavior: smooth;
-    }
-    body {
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        background: linear-gradient(to right, #1fa2ff, #12d8fa, #a6ffcb);
-        color: white;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        margin: 0;
-        padding: 0;
-        transition: all 0.5s ease;
-    }
+        html {
+            scroll-behavior: smooth;
+        }
 
-    .container {
-        text-align: center;
-        padding: 40px;
-        max-width: 800px;
-    }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(to right, #1fa2ff, #12d8fa, #a6ffcb);
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+            transition: all 0.5s ease;
+        }
 
-    .animated {
-        font-weight: bold;
-        opacity: 0;
-    }
+        .container {
+            text-align: center;
+            padding: 40px;
+            max-width: 800px;
+        }
 
-    .instructions {
-        visibility: hidden;
-        opacity: 0;
-        transition: opacity 2s;
-        font-size: 1.5em;
-    }
+        .animated {
+            font-weight: bold;
+            opacity: 0;
+        }
 
-    .resume-box {
-        display: none;
-        margin-top: 20px;
-        padding: 20px;
-        background: green;
-        border-radius: 5px;
-        transition: all 0.5s ease;
-    }
+        .instructions {
+            visibility: hidden;
+            opacity: 0;
+            transition: opacity 2s;
+            font-size: 1.5em;
+        }
 
-    a {
-        color: #1fa2ff;
-        text-decoration: none;
-        font-weight: bold;
-    }
+        .resume-box {
+            display: none;
+            margin-top: 20px;
+            padding: 20px;
+            background: green;
+            border-radius: 5px;
+            transition: all 0.5s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
 
-    .resume-box a {
-        display: inline-block;
-        margin: 0 20px;  /* Increased the margin for more spacing */
-        padding: 5px 15px;
-        background: #1fa2ff;
-        border-radius: 3px;
-        transition: background 0.3s;
-        color: white;
-    }
+        a {
+            color: #1fa2ff;
+            text-decoration: none;
+            font-weight: bold;
+        }
 
-    .resume-box a:hover {
-        background: #0056b3;
-    }
+        .resume-box a {
+            display: inline-block;
+            margin: 0 20px;
+            padding: 5px 15px;
+            background: #1fa2ff;
+            border-radius: 3px;
+            transition: background 0.3s;
+            color: white;
+        }
 
-    .resume-box:hover {
-        background: blue;
-    }
+        .resume-box a:hover {
+            background: #0056b3;
+        }
 
-    .resume-box:hover a {
-        color: white;
-    }
+        .resume-box:hover {
+            background: blue;
+        }
+
+        .resume-box:hover a {
+            color: white;
+        }
+
+        @media only screen and (max-width: 600px) {
+            /* This media query is for mobile screens */
+            .resume-box a {
+                margin: 10px 0; /* This stacks the buttons vertically with a margin in between */
+            }
+        }
     </style>
 </head>
+
 <body>
     <div class="container">
         <h1 class="animated" id="welcome"></h1>
@@ -89,52 +102,52 @@
         </div>
     </div>
     <script>
-    window.onload = function() {
-        let delay = 50;
-        let elements = ['Welcome', 'To', "Monesh's", 'Resume', 'Portal'];
-        let elementIDs = ['welcome', 'to', 'monesh', 'resume', 'portal'];
-        let totalDelay = 0;
-        let failedAttempts = 0;
+        window.onload = function() {
+            let delay = 50;
+            let elements = ['Welcome', 'To', "Monesh's", 'Resume', 'Portal'];
+            let elementIDs = ['welcome', 'to', 'monesh', 'resume', 'portal'];
+            let totalDelay = 0;
+            let failedAttempts = 0;
 
-        elements.forEach((text, index) => {
-            [...text].forEach((char, charIndex) => {
-                totalDelay += delay;
-                setTimeout(() => {
-                    document.getElementById(elementIDs[index]).innerText += char;
-                    document.getElementById(elementIDs[index]).style.opacity = '1';
-                }, totalDelay);
+            elements.forEach((text, index) => {
+                [...text].forEach((char, charIndex) => {
+                    totalDelay += delay;
+                    setTimeout(() => {
+                        document.getElementById(elementIDs[index]).innerText += char;
+                        document.getElementById(elementIDs[index]).style.opacity = '1';
+                    }, totalDelay);
+                });
+                totalDelay += delay * 5;
             });
-            totalDelay += delay * 5;
-        });
 
-        setTimeout(() => {
-            document.getElementById('instructions').style.visibility = 'visible';
-            document.getElementById('instructions').style.opacity = '1';
-        }, totalDelay);
+            setTimeout(() => {
+                document.getElementById('instructions').style.visibility = 'visible';
+                document.getElementById('instructions').style.opacity = '1';
+            }, totalDelay);
 
-        setTimeout(() => {
-            document.getElementById('resume-box').style.display = 'inline-block';
-        }, totalDelay + 250);
+            setTimeout(() => {
+                document.getElementById('resume-box').style.display = 'inline-block';
+            }, totalDelay + 250);
 
-        document.getElementById('download-link').addEventListener('click', function(e) {
-            e.preventDefault();
-            if (failedAttempts >= 3) {
-                alert("Access denied");
-                return;
-            }
-            let password = prompt("Enter password");
-            if (password === "1234") {
-                window.open('https://moneshteja.github.io/resumepdf/MoneshTejaSanduru_2023 B.tech(cse).pdf');
-            } else {
-                alert("Incorrect password");
-                failedAttempts++;
+            document.getElementById('download-link').addEventListener('click', function(e) {
+                e.preventDefault();
                 if (failedAttempts >= 3) {
                     alert("Access denied");
+                    return;
                 }
-            }
-        });
-    };
+                let password = prompt("Enter password");
+                if (password === "1234") {
+                    window.open('https://moneshteja.github.io/resumepdf/MoneshTejaSanduru_2023 B.tech(cse).pdf');
+                } else {
+                    alert("Incorrect password");
+                    failedAttempts++;
+                    if (failedAttempts >= 3) {
+                        alert("Access denied");
+                    }
+                }
+            });
+        };
     </script>
 </body>
-    </html>
-    
+
+</html>
