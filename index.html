@@ -1,138 +1,55 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-    <title>Monesh's Resume</title>
     <style>
-        html {
-            scroll-behavior: smooth;
-        }
-
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(to right, #1fa2ff, #12d8fa, #a6ffcb);
-            color: white;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
+            background-color: #f0f0f0;
             margin: 0;
-            padding: 0;
-            transition: all 0.5s ease;
         }
 
-        .container {
+        .calculator {
+            width: 220px;
+            height: 320px;
+            border: 1px solid #000;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: 1fr 4fr 4fr 4fr 1fr;
+            gap: 1px;
+        }
+
+        .display {
+            grid-column: 1 / 5;
+            grid-row: 1;
+            background-color: #000;
+            color: #fff;
+            padding: 5px;
+            text-align: right;
+        }
+
+        .button {
+            background-color: #fff;
+            color: #000;
+            padding: 5px;
             text-align: center;
-            padding: 40px;
-            max-width: 800px;
+            border: 1px solid #000;
         }
 
-        .animated {
-            font-weight: bold;
-            opacity: 0;
-        }
-
-        .instructions {
-            visibility: hidden;
-            opacity: 0;
-            transition: opacity 2s;
-            font-size: 1.5em;
-        }
-
-        .resume-box {
-            display: none;
-            margin-top: 20px;
-            padding: 20px;
-            background: green;
-            border-radius: 5px;
-            transition: all 0.5s ease;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        a {
-            color: #1fa2ff;
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        .resume-box a {
-            display: inline-block;
-            margin: 0 20px;
-            margin-top: 10px;
-            margin-bottom: 10px;
-            padding: 5px 15px;
-            background: #1fa2ff;
-            border-radius: 3px;
-            transition: background 0.3s;
-            color: white;
-        }
-
-        .resume-box a:hover {
-            background: #0056b3;
-        }
-
-        .resume-box:hover {
-            background: blue;
-        }
-
-        .resume-box:hover a {
-            color: white;
-        }
-
-        @media only screen and (max-width: 600px) {
-            /* This media query is for mobile screens */
-            .resume-box a {
-                margin: 10px 0; /* This stacks the buttons vertically with a margin in between */
-            }
+        .operator {
+            background-color: #faa;
+            color: #fff;
         }
     </style>
 </head>
-
 <body>
-    <div class="container">
-        <h1 class="animated" id="welcome"></h1>
-        <h1 class="animated" id="to"></h1>
-        <h1 class="animated" id="monesh"></h1>
-        <h1 class="animated" id="resume"></h1>
-        <h1 class="animated" id="portal"></h1>
-        <p class="instructions" id="instructions">Click below to get my resume</p>
-        <div class="resume-box" id="resume-box">
-            <a href="#" id="download-link">Resume in PDF</a>
-            <a href="https://moneshteja.github.io/resume/" id="portal-link" target="_blank">Resume Portal</a>
-        </div>
-    </div>
-    <script>
-        window.onload = function() {
-            let delay = 50;
-            let elements = ['Welcome', 'To', "Monesh's", 'Resume', 'Portal'];
-            let elementIDs = ['welcome', 'to', 'monesh', 'resume', 'portal'];
-            let totalDelay = 0;
-            let failedAttempts = 0;
-
-            elements.forEach((text, index) => {
-                [...text].forEach((char, charIndex) => {
-                    totalDelay += delay;
-                    setTimeout(() => {
-                        document.getElementById(elementIDs[index]).innerText += char;
-                        document.getElementById(elementIDs[index]).style.opacity = '1';
-                    }, totalDelay);
-                });
-                totalDelay += delay * 5;
-            });
-
-            setTimeout(() => {
-                document.getElementById('instructions').style.visibility = 'visible';
-                document.getElementById('instructions').style.opacity = '1';
-            }, totalDelay);
-
-            setTimeout(() => {
-                document.getElementById('resume-box').style.display = 'flex'; 
-            }, totalDelay + 250);
-
-            // ... Rest of the JavaScript ...
-        };
-    </script>
-</body>
-
-</html>
+    <div class="calculator">
+        <input type="text" class="display" id="display" disabled>
+        <button class="operator" id="add">+</button>
+        <button class="operator" id="subtract">-</button>
+        <button class="operator" id="multiply">*</button>
+        <button class="operator" id="divide">/</button>
+        <button class="number" id="zero">0</button>
+        <button class="number" id="one">1</
