@@ -4,45 +4,63 @@
   <title>Basic Calculator</title>
   <style>
     .calculator {
-      width: 200px;
+      width: 280px;
       padding: 10px;
       border: 1px solid #ccc;
+      background-color: #f2f2f2;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
     }
     .calculator input {
       width: 100%;
       margin-bottom: 10px;
+      padding: 5px;
+      font-size: 20px;
+      text-align: right;
     }
     .calculator button {
-      width: 50px;
-      height: 30px;
-      margin-right: 5px;
+      width: 68px;
+      height: 40px;
+      margin-bottom: 5px;
+      font-size: 18px;
+      border: none;
+      cursor: pointer;
+    }
+    .calculator button.numbers {
+      background-color: black;
+      color: white;
+    }
+    .calculator button.operators {
+      background-color: #333;
+      color: #f2f2f2;
+    }
+    .calculator button.clear {
+      background-color: darkgreen;
+      color: white;
     }
   </style>
 </head>
 <body>
   <div class="calculator">
     <input type="text" id="output" disabled>
-    <button onclick="clearOutput()">AC</button>
-    <br>
-    <button onclick="appendNumber(9)">9</button>
-    <button onclick="appendNumber(8)">8</button>
-    <button onclick="appendNumber(7)">7</button>
-    <button onclick="appendOperator('+')">+</button>
-    <br>
-    <button onclick="appendNumber(4)">4</button>
-    <button onclick="appendNumber(5)">5</button>
-    <button onclick="appendNumber(6)">6</button>
-    <button onclick="appendOperator('-')">-</button>
-    <br>
-    <button onclick="appendNumber(1)">1</button>
-    <button onclick="appendNumber(2)">2</button>
-    <button onclick="appendNumber(3)">3</button>
-    <button onclick="appendOperator('/')">/</button>
-    <br>
-    <button onclick="appendDecimal()">.</button>
-    <button onclick="appendNumber(0)">0</button>
-    <button onclick="calculate()">=</button>
-    <button onclick="appendOperator('*')">*</button>
+    <button onclick="clearOutput()" class="clear">AC</button>
+    <button onclick="appendNumber(9)" class="numbers">9</button>
+    <button onclick="appendNumber(8)" class="numbers">8</button>
+    <button onclick="appendNumber(7)" class="numbers">7</button>
+    <button onclick="appendOperator('+')" class="operators">+</button>
+    <button onclick="appendNumber(4)" class="numbers">4</button>
+    <button onclick="appendNumber(5)" class="numbers">5</button>
+    <button onclick="appendNumber(6)" class="numbers">6</button>
+    <button onclick="appendOperator('-')" class="operators">-</button>
+    <button onclick="appendNumber(1)" class="numbers">1</button>
+    <button onclick="appendNumber(2)" class="numbers">2</button>
+    <button onclick="appendNumber(3)" class="numbers">3</button>
+    <button onclick="appendOperator('/')" class="operators">/</button>
+    <button onclick="appendDecimal()" class="numbers">.</button>
+    <button onclick="appendNumber(0)" class="numbers">0</button>
+    <button onclick="calculate()" class="operators">=</button>
+    <button onclick="appendOperator('*')" class="operators">*</button>
   </div>
 
   <script>
@@ -81,3 +99,4 @@
   </script>
 </body>
 </html>
+ 
