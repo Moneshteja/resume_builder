@@ -30,7 +30,7 @@
     </div>
     <div>
         <label for="languages">Languages:</label>
-        <input type="text" id="languages" placeholder="e.g. English (Fluent), French (Basic)">
+        <input type="text" id="languages" placeholder="e.g. English (Fluent)">
     </div>
     <div>
         <label for="skills">Skills:</label>
@@ -41,24 +41,36 @@
     <div id="educationSection">
         <h4>Education</h4>
         <div id="dynamicEducationFields">
-            <!-- Initial education fields will be populated via JS -->
+            <div id="education1">
+                <label>Degree/School:</label>
+                <input type="text" id="degree1">
+                <label>Institution/College Name:</label>
+                <input type="text" id="institution1">
+                <label>Pass Percentage:</label>
+                <input type="text" id="percentage1">
+            </div>
         </div>
         <button type="button" onclick="addEducationField()">Add Another Education</button>
-    </div>
-
-    <!-- Achievements -->
-    <div>
-        <label for="achievements">Achievements (Enter each achievement on a new line):</label>
-        <textarea id="achievements" rows="5" placeholder="List your achievements, one per line"></textarea>
     </div>
 
     <!-- Projects -->
     <div id="projectsSection">
         <h4>Projects</h4>
         <div id="dynamicProjectFields">
-            <!-- Initial project fields will be populated via JS -->
+            <div id="project1">
+                <label>Project Name:</label>
+                <input type="text" id="projectName1">
+                <label>Description:</label>
+                <textarea id="projectDesc1"></textarea>
+            </div>
         </div>
         <button type="button" onclick="addProjectField()">Add Another Project</button>
+    </div>
+
+    <!-- Achievements -->
+    <div>
+        <label for="achievements">Achievements (Enter each achievement on a new line):</label>
+        <textarea id="achievements" rows="5" placeholder="List your achievements, one per line"></textarea>
     </div>
 
     <button type="submit">Preview</button>
@@ -82,4 +94,5 @@
 <script src="scripts.js"></script>
 
 </body>
-</html>
+    </html>
+    
