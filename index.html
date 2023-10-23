@@ -13,7 +13,7 @@
             background-color: #f4f4f4;
         }
 
-        h2 {
+        h2, h4 {
             border-bottom: 2px solid #666;
             padding-bottom: 10px;
             margin-bottom: 20px;
@@ -50,6 +50,11 @@
             border-radius: 4px;
             cursor: pointer;
         }
+
+        .projectName, .educationDegree {
+            font-weight: bold;
+            font-size: 1.2em;
+        }
     </style>
 </head>
 
@@ -58,64 +63,101 @@
     <h2>Resume Builder</h2>
     
     <form id="resumeData" onsubmit="generateResume(event)">
-        <div>
-            <label for="fullName">Full Name:</label>
-            <input type="text" id="fullName" placeholder="Full Name">
+        <!-- ... Name, Email ... -->
+
+        <!-- Education Section -->
+        <div id="educationSection">
+            <label for="educationCount">How many educational qualifications do you have?</label>
+            <input type="number" id="educationCount" min="1" value="1" onchange="generateEducationFields()">
+            <div id="dynamicEducationFields">
+                <!-- Dynamic education fields will be populated here -->
+            </div>
         </div>
+
+        <!-- Achievements Section -->
         <div>
-            <label for="email">Email:</label>
-            <input type="text" id="email" placeholder="Email">
+            <label for="achievements">Achievements (Enter each achievement on a new line):</label>
+            <textarea id="achievements" rows="5" placeholder="List your achievements, one per line"></textarea>
         </div>
+
+        <!-- Projects Section -->
+        <div id="projectsSection">
+            <label for="projectCount">How many projects have you worked on?</label>
+            <input type="number" id="projectCount" min="1" value="1" onchange="generateProjectFields()">
+            <div id="dynamicProjectFields">
+                <!-- Dynamic project fields will be populated here -->
+            </div>
+        </div>
+
+        <!-- Template Selection -->
         <div>
-            <label for="education">Education:</label>
-            <textarea id="education" rows="3" placeholder="List your educational background"></textarea>
+            <label for="templateSelection">Select a template:</label>
+            <select id="templateSelection">
+                <option value="template1">Template 1</option>
+                <option value="template2">Template 2</option>
+                <option value="template3">Template 3</option>
+            </select>
         </div>
-        <div>
-            <label for="skills">Skills:</label>
-            <textarea id="skills" rows="3" placeholder="List your skills separated by commas"></textarea>
-        </div>
-        <div>
-            <label for="achievements">Achievements:</label>
-            <textarea id="achievements" rows="3" placeholder="List your achievements"></textarea>
-        </div>
-        <div>
-            <label for="projects">Projects:</label>
-            <textarea id="projects" rows="3" placeholder="Describe your key projects"></textarea>
-        </div>
-        
+
         <button type="submit">Generate Resume</button>
     </form>
-    
+
     <h2>Generated Resume:</h2>
     <div id="generatedResume" style="border: 1px solid #ddd; padding: 10px; margin-top: 20px;">
         <!-- Generated resume will appear here -->
     </div>
 
     <script>
-        function generateResume(event) {
-            event.preventDefault(); // Stop form submission
+        function generateEducationFields() {
+            let count = document.getElementById("educationCount").value;
+            let container = document.getElementById("dynamicEducationFields");
+            container.innerHTML = ''; // Clear previous fields
 
-            let fullName = document.getElementById("fullName").value || "Name not provided";
-            let email = document.getElementById("email").value || "Email not provided";
-            let education = document.getElementById("education").value || "Education details not provided";
-            let skills = document.getElementById("skills").value || "Skills not provided";
-            let achievements = document.getElementById("achievements").value || "Achievements not provided";
-            let projects = document.getElementById("projects").value || "Project details not provided";
+            for (let i = 1; i <= count; i++) {
+                container.innerHTML += `
+                    <h4>Education ${i}</h4>
+                    <input type="text" placeholder="Degree/School (e.g. B.Tech in Computer Science)">
+                    <input type="text" placeholder="Institution/College Name">
+                    <input type="text" placeholder="Pass Percentage">
+                `;
+            }
+        }
+
+        function generateProjectFields() {
+            let count = document.getElementById("projectCount").value;
+            let container = document.getElementById("dynamicProjectFields");
+            container.innerHTML = ''; // Clear previous fields
+
+            for (let i = 1; i <= count; i++) {
+                container.innerHTML += `
+                    <h4>Project ${i}</h4>
+                    <input type="text" placeholder="Project Name">
+                    <textarea rows="3" placeholder="Project Description"></textarea>
+                `;
+            }
+        }
+
+        function generateResume(event) {
+            event.preventDefault();
+
+            // Fetch all fields and generate the resume
+            // Education, Achievements, Projects ...
+
+            let achievements = document.getElementById("achievements").value.split('\n');
+            let achievementsList = achievements.map(ach => `<li>${ach}</li>`).join('');
+
+            // Similarly, fetch education and projects, then populate the resume.
 
             let resumeDiv = document.getElementById("generatedResume");
             resumeDiv.innerHTML = `
-                <h1>${fullName}</h1>
-                <p>Email: ${email}</p>
-                <h3>Education:</h3>
-                <p>${education}</p>
-                <h3>Skills:</h3>
-                <p>${skills}</p>
-                <h3>Achievements:</h3>
-                <p>${achievements}</p>
-                <h3>Projects:</h3>
-                <p>${projects}</p>
+                <!-- Format the resume output -->
+                <ul>${achievementsList}</ul>
             `;
         }
+
+        // Initialize the dynamic fields for education and projects when the page loads
+        generateEducationFields();
+        generateProjectFields();
     </script>
 
 </body>
