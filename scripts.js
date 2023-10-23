@@ -84,6 +84,46 @@ function updateTemplate() {
         // apply third template styles
     }
 }
+// ... Existing script content ...
+
+function deleteEducationField() {
+    if (educationCounter > 1) { // Ensure at least one field remains
+        const educationField = document.getElementById(`education${educationCounter}`);
+        educationField.remove();
+        educationCounter--;
+    }
+}
+
+function deleteProjectField() {
+    if (projectCounter > 1) { // Ensure at least one field remains
+        const projectField = document.getElementById(`project${projectCounter}`);
+        projectField.remove();
+        projectCounter--;
+    }
+}
+
+function generatePDF() {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+    const content = document.getElementById("resumePreview").innerText;
+    
+    // This is a basic way to set text to bold and increase size
+    doc.setFontSize(20); 
+    doc.setFont("times", "bold");
+    
+    doc.text(content, 10, 10);
+    doc.save("resume.pdf");
+}
+
+function generateWord() {
+    // You'd use the `docx` library here. It's a bit extensive 
+    // to show a full example within this format. But it involves 
+    // creating a document, adding paragraphs with content, 
+    // and then saving that as a .docx file.
+}
+
+// ... Rest of the script content ...
+             
 
 function generatePDF() {
     const { jsPDF }
