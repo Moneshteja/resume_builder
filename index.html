@@ -13,7 +13,50 @@
 <h2>Resume Builder</h2>
 
 <form id="resumeData" onsubmit="generateResume(event); return false;">
-    <!-- ... Entire Form Here ... -->
+
+    <!-- Personal Details -->
+    <div>
+        <label for="fullName">Full Name:</label>
+        <input type="text" id="fullName" placeholder="Full Name">
+    </div>
+    <div>
+        <label for="email">Email:</label>
+        <input type="text" id="email" placeholder="Email">
+    </div>
+    <div>
+        <label for="image">Upload Image:</label>
+        <input type="file" id="image">
+    </div>
+    <div>
+        <label for="languageSkills">Language Skills:</label>
+        <input type="text" id="languageSkills" placeholder="e.g. English (Fluent), French (Basic)">
+    </div>
+
+    <!-- Education -->
+    <div id="educationSection">
+        <h4>Education</h4>
+        <div id="dynamicEducationFields">
+            <!-- Initial education fields will be populated via JS -->
+        </div>
+        <button type="button" onclick="addEducationField()">Add Another Education</button>
+    </div>
+
+    <!-- Achievements -->
+    <div>
+        <label for="achievements">Achievements (Enter each achievement on a new line):</label>
+        <textarea id="achievements" rows="5" placeholder="List your achievements, one per line"></textarea>
+    </div>
+
+    <!-- Projects -->
+    <div id="projectsSection">
+        <h4>Projects</h4>
+        <div id="dynamicProjectFields">
+            <!-- Initial project fields will be populated via JS -->
+        </div>
+        <button type="button" onclick="addProjectField()">Add Another Project</button>
+    </div>
+
+    <button type="submit">Preview</button>
 </form>
 
 <h2>Resume Preview</h2>
@@ -33,4 +76,5 @@
 <script src="scripts.js"></script>
 
 </body>
-</html>
+    </html>
+    
