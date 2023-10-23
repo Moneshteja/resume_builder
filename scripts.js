@@ -4,6 +4,7 @@ let projectCounter = 1;    // Same here
 function addEducationField() {
     educationCounter++;
     const container = document.createElement('div');
+    container.id = `education${educationCounter}`;
     container.innerHTML = `
         <label>Degree/School:</label>
         <input type="text" id="degree${educationCounter}">
@@ -15,17 +16,10 @@ function addEducationField() {
     document.getElementById('dynamicEducationFields').appendChild(container);
 }
 
-function deleteEducationField() {
-    if (educationCounter > 1) {
-        const lastField = document.getElementById(`education${educationCounter}`);
-        lastField.remove();
-        educationCounter--;
-    }
-}
-
 function addProjectField() {
     projectCounter++;
     const container = document.createElement('div');
+    container.id = `project${projectCounter}`;
     container.innerHTML = `
         <label>Project Name:</label>
         <input type="text" id="projectName${projectCounter}">
@@ -35,15 +29,7 @@ function addProjectField() {
     document.getElementById('dynamicProjectFields').appendChild(container);
 }
 
-function deleteProjectField() {
-    if (projectCounter > 1) {
-        const lastField = document.getElementById(`project${projectCounter}`);
-        lastField.remove();
-        projectCounter--;
-    }
-}
-
-function generateResume() {
+function generateResume(event) {
     let resumeOutput = "";
 
     const fullName = document.getElementById("fullName").value;
@@ -57,42 +43,45 @@ function generateResume() {
     resumeOutput += `<p>Languages: ${languages}</p>`;
     resumeOutput += `<p>Skills: ${skills}</p>`;
 
+    const image = document.getElementById("image");
+    if (image.files && image.files[0]) {
+        const reader = new FileReader();
+        reader.onload = function (e) {
+            resumeOutput += `<img src="${e.target.result}" width="100" alt="Uploaded Image">`;
+            document.getElementById("resumePreview").innerHTML = resumeOutput;
+        }
+        reader.readAsDataURL(image.files[0]);
+    } else {
+        document.getElementById("resumePreview").innerHTML = resumeOutput;
+    }
+
     for (let i = 1; i <= educationCounter; i++) {
         const degree = document.getElementById(`degree${i}`).value;
         const institution = document.getElementById(`institution${i}`).value;
         const percentage = document.getElementById(`percentage${i}`).value;
+
         resumeOutput += `<p>${degree} from ${institution}, ${percentage}%</p>`;
     }
 
     for (let i = 1; i <= projectCounter; i++) {
         const projectName = document.getElementById(`projectName${i}`).value;
         const projectDesc = document.getElementById(`projectDesc${i}`).value;
+
         resumeOutput += `<h3>${projectName}</h3><p>${projectDesc}</p>`;
     }
-
-    achievements.forEach(achievement => {
-        resumeOutput += `<li>${achievement}</li>`;
-    });
 
     document.getElementById("resumePreview").innerHTML = resumeOutput;
 }
 
 function generatePDF() {
+    // For this function, you would need a library like jsPDF integrated 
+    // This is just a basic implementation
     const { jsPDF } = window.jspdf;
     const doc = new jsPDF();
-    const content = document.getElementById("resumePreview").innerText;
-
-    doc.setFontSize(20); 
-    doc.setFont("times", "bold");
-    doc.text(content, 10, 10);
+    doc.text(document.getElementById("resumePreview").innerText, 10, 10);
     doc.save("resume.pdf");
 }
 
-function generateWord() {
-    // Placeholder: For a full-fledged Word generation solution, you'd integrate with the 'docx' library.
-    alert('Generating Word document is a more advanced feature and requires integration with the docx library.');
-}
-
-// Initialize by adding the initial fields.
+// We keep the initial function calls to add default fields
 addEducationField();
 addProjectField();
