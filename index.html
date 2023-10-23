@@ -1,102 +1,54 @@
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-  <title>Basic Calculator</title>
-  <style>
-    .calculator {
-      width: 280px;
-      padding: 10px;
-      border: 1px solid #ccc;
-      background-color: #f2f2f2;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-    }
-    .calculator input {
-      width: 100%;
-      margin-bottom: 10px;
-      padding: 5px;
-      font-size: 20px;
-      text-align: right;
-    }
-    .calculator button {
-      width: 68px;
-      height: 40px;
-      margin-bottom: 5px;
-      font-size: 18px;
-      border: none;
-      cursor: pointer;
-    }
-    .calculator button.numbers {
-      background-color: black;
-      color: white;
-    }
-    .calculator button.operators {
-      background-color: #333;
-      color: #f2f2f2;
-    }
-    .calculator button.clear {
-      background-color: darkgreen;
-      color: white;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Resume Builder</title>
 </head>
+
 <body>
-  <div class="calculator">
-    <input type="text" id="output" disabled>
-    <button onclick="clearOutput()" class="clear">AC</button>
-    <button onclick="appendNumber(9)" class="numbers">9</button>
-    <button onclick="appendNumber(8)" class="numbers">8</button>
-    <button onclick="appendNumber(7)" class="numbers">7</button>
-    <button onclick="appendOperator('+')" class="operators">+</button>
-    <button onclick="appendNumber(4)" class="numbers">4</button>
-    <button onclick="appendNumber(5)" class="numbers">5</button>
-    <button onclick="appendNumber(6)" class="numbers">6</button>
-    <button onclick="appendOperator('-')" class="operators">-</button>
-    <button onclick="appendNumber(1)" class="numbers">1</button>
-    <button onclick="appendNumber(2)" class="numbers">2</button>
-    <button onclick="appendNumber(3)" class="numbers">3</button>
-    <button onclick="appendOperator('/')" class="operators">/</button>
-    <button onclick="appendDecimal()" class="numbers">.</button>
-    <button onclick="appendNumber(0)" class="numbers">0</button>
-    <button onclick="calculate()" class="operators">=</button>
-    <button onclick="appendOperator('*')" class="operators">*</button>
-  </div>
 
-  <script>
-    let output = document.getElementById('output');
-    let expression = '';
+    <h2>Resume Builder</h2>
+    
+    <form id="resumeData" onsubmit="generateResume(event)">
+        <div>
+            <label for="fullName">Full Name:</label>
+            <input type="text" id="fullName" placeholder="Full Name" required>
+        </div>
+        <div>
+            <label for="email">Email:</label>
+            <input type="text" id="email" placeholder="Email" required>
+        </div>
+        <!-- ... Add other fields as necessary ... -->
+        
+        <button type="submit">Generate Resume</button>
+    </form>
+    
+    <h2>Generated Resume:</h2>
+    <div id="generatedResume" style="border: 1px solid black; padding: 10px;">
+        <!-- Generated resume will appear here -->
+    </div>
 
-    function appendNumber(number) {
-      expression += number;
-      output.value = expression;
-    }
+    <script>
+        function generateResume(event) {
+            event.preventDefault(); // Stop form submission
 
-    function appendOperator(operator) {
-      expression += operator;
-      output.value = expression;
-    }
+            let fullName = document.getElementById("fullName").value;
+            let email = document.getElementById("email").value;
+            // ... retrieve other fields ...
 
-    function appendDecimal() {
-      expression += '.';
-      output.value = expression;
-    }
+            let resumeDiv = document.getElementById("generatedResume");
+            resumeDiv.innerHTML = `
+                <h1>${fullName}</h1>
+                <p>${email}</p>
+                <!-- ... Populate other fields ... -->
+            `;
+        }
+    </script>
 
-    function calculate() {
-      try {
-        let result = eval(expression);
-        output.value = result;
-        expression = '';
-      } catch (error) {
-        output.value = 'Error';
-      }
-    }
-
-    function clearOutput() {
-      expression = '';
-      output.value = '';
-    }
-  </script>
 </body>
+
 </html>
- 
+
