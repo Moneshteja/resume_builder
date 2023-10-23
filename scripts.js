@@ -38,35 +38,56 @@ function removeField(type, count) {
 }
 
 function generateResume(event) {
-    // Collect all form data, format it, and display it in the "resumePreview" div.
-    // For simplicity, we'll just use a basic string formatting here.
+    let resumeOutput = "";
+
+    // Gather form data
     const fullName = document.getElementById("fullName").value;
     const email = document.getElementById("email").value;
-    const languageSkills = document.getElementById("languageSkills").value;
-    const achievements = document.getElementById("achievements").value;
+    const languages = document.getElementById("languages").value;
+    const skills = document.getElementById("skills").value;
+    const achievements = document.getElementById("achievements").value.split('\n');
 
-    // ... Fetch other fields like education and projects ...
+    resumeOutput += `<h1>${fullName}</h1>`;
+    resumeOutput += `<p>Email: ${email}</p>`;
+    resumeOutput += `<p>Languages: ${languages}</p>`;
+    resumeOutput += `<p>Skills: ${skills}</p>`;
 
-    const resumeOutput = `
-        <h1>${fullName}</h1>
-        <p>Email: ${email}</p>
-        <p>Language Skills: ${languageSkills}</p>
-        <p>Achievements: ${achievements}</p>
-        <!-- ... Display other fields like education and projects ... -->
-    `;
+    const image = document.getElementById("image");
+    if (image.files && image.files[0]) {
+        const reader = new FileReader();
+        reader.onload = function (e) {
+            resumeOutput += `<img src="${e.target.result}" width="100" alt="Uploaded Image">`;
+            document.getElementById("resumePreview").innerHTML = resumeOutput;
+        }
+        reader.readAsDataURL(image.files[0]);
+    } else {
+        document.getElementById("resumePreview").innerHTML = resumeOutput;
+    }
+
+    resumeOutput += `<h3>Achievements</h3><ul>`;
+    achievements.forEach(achievement => {
+        resumeOutput += `<li>${achievement}</li>`;
+    });
+    resumeOutput += `</ul>`;
+
+    for (let i = 1; i <= educationCounter; i++) {
+        const degree = document.getElementById(`degree${i}`).value;
+        const institution = document.getElementById(`institution${i}`).value;
+        const percentage = document.getElementById(`percentage${i}`).value;
+
+        resumeOutput += `<p>${degree} from ${institution}, ${percentage}%</p>`;
+    }
+
+    for (let i = 1; i <= projectCounter; i++) {
+        const projectName = document.getElementById(`projectName${i}`).value;
+        const projectDesc = document.getElementById(`projectDesc${i}`).value;
+
+        resumeOutput += `<h3>${projectName}</h3><p>${projectDesc}</p>`;
+    }
 
     document.getElementById("resumePreview").innerHTML = resumeOutput;
 }
 
 function updateTemplate() {
-    // Code to change the appearance of the preview based on the selected template.
-}
-
-function generatePDF() {
-    // Code to generate a downloadable PDF.
-    // This will require additional libraries or backend functionality to properly implement.
-}
-
-// Initial calls to create the first set of dynamic fields.
-addEducationField();
-addProjectField();
+    // Code to change the appearance of the preview based on the selected
+                                                                             
