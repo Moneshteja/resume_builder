@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Advanced Resume Builder</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
 </head>
 
 <body>
@@ -28,8 +29,12 @@
         <input type="file" id="image">
     </div>
     <div>
-        <label for="languageSkills">Language Skills:</label>
-        <input type="text" id="languageSkills" placeholder="e.g. English (Fluent), French (Basic)">
+        <label for="languages">Languages:</label>
+        <input type="text" id="languages" placeholder="e.g. English (Fluent), French (Basic)">
+    </div>
+    <div>
+        <label for="skills">Skills:</label>
+        <input type="text" id="skills" placeholder="e.g. Python, Web Development">
     </div>
 
     <!-- Education -->
@@ -77,5 +82,4 @@
 <script src="scripts.js"></script>
 
 </body>
-        </html>
-        
+</html>
