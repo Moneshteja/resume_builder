@@ -13,7 +13,7 @@
 
 <h2>Resume Builder</h2>
 
-<form id="resumeData" onsubmit="generateResume(event); return false;">
+<form id="resumeData" onsubmit="generateResume(event);">
 
     <!-- Personal Details -->
     <div>
@@ -73,7 +73,7 @@
         <textarea id="achievements" rows="5" placeholder="List your achievements, one per line"></textarea>
     </div>
 
-    <button type="submit">Preview</button>
+    <button type="button" onclick="generateResume()">Preview</button>
 
 </form>
 
@@ -95,4 +95,4 @@
 
 </body>
     </html>
-    
+            
