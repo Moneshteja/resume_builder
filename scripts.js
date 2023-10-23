@@ -1,10 +1,9 @@
-let educationCounter = 1;  
-let projectCounter = 1;   
+let educationCounter = 1;  // Start from 1 due to the initial field
+let projectCounter = 1;    // Same here
 
 function addEducationField() {
     educationCounter++;
     const container = document.createElement('div');
-    container.id = `education${educationCounter}`;
     container.innerHTML = `
         <label>Degree/School:</label>
         <input type="text" id="degree${educationCounter}">
@@ -16,10 +15,17 @@ function addEducationField() {
     document.getElementById('dynamicEducationFields').appendChild(container);
 }
 
+function deleteEducationField() {
+    if (educationCounter > 1) {
+        const lastField = document.getElementById(`education${educationCounter}`);
+        lastField.remove();
+        educationCounter--;
+    }
+}
+
 function addProjectField() {
     projectCounter++;
     const container = document.createElement('div');
-    container.id = `project${projectCounter}`;
     container.innerHTML = `
         <label>Project Name:</label>
         <input type="text" id="projectName${projectCounter}">
@@ -27,6 +33,14 @@ function addProjectField() {
         <textarea id="projectDesc${projectCounter}"></textarea>
     `;
     document.getElementById('dynamicProjectFields').appendChild(container);
+}
+
+function deleteProjectField() {
+    if (projectCounter > 1) {
+        const lastField = document.getElementById(`project${projectCounter}`);
+        lastField.remove();
+        projectCounter--;
+    }
 }
 
 function generateResume() {
@@ -43,88 +57,42 @@ function generateResume() {
     resumeOutput += `<p>Languages: ${languages}</p>`;
     resumeOutput += `<p>Skills: ${skills}</p>`;
 
-    const image = document.getElementById("image");
-    if (image.files && image.files[0]) {
-        const reader = new FileReader();
-        reader.onload = function (e) {
-            resumeOutput += `<img src="${e.target.result}" width="100" alt="Uploaded Image">`;
-            document.getElementById("resumePreview").innerHTML = resumeOutput;
-        }
-        reader.readAsDataURL(image.files[0]);
-    } else {
-        document.getElementById("resumePreview").innerHTML = resumeOutput;
-    }
-
     for (let i = 1; i <= educationCounter; i++) {
         const degree = document.getElementById(`degree${i}`).value;
         const institution = document.getElementById(`institution${i}`).value;
         const percentage = document.getElementById(`percentage${i}`).value;
-
         resumeOutput += `<p>${degree} from ${institution}, ${percentage}%</p>`;
     }
 
     for (let i = 1; i <= projectCounter; i++) {
         const projectName = document.getElementById(`projectName${i}`).value;
         const projectDesc = document.getElementById(`projectDesc${i}`).value;
-
         resumeOutput += `<h3>${projectName}</h3><p>${projectDesc}</p>`;
     }
 
+    achievements.forEach(achievement => {
+        resumeOutput += `<li>${achievement}</li>`;
+    });
+
     document.getElementById("resumePreview").innerHTML = resumeOutput;
-}
-
-function updateTemplate() {
-    // This function can be used to apply different templates. Placeholder for now.
-    const template = document.getElementById("templateSelection").value;
-    if(template === "template1") {
-        // apply first template styles
-    } else if(template === "template2") {
-        // apply second template styles
-    } else if(template === "template3") {
-        // apply third template styles
-    }
-}
-// ... Existing script content ...
-
-function deleteEducationField() {
-    if (educationCounter > 1) { // Ensure at least one field remains
-        const educationField = document.getElementById(`education${educationCounter}`);
-        educationField.remove();
-        educationCounter--;
-    }
-}
-
-function deleteProjectField() {
-    if (projectCounter > 1) { // Ensure at least one field remains
-        const projectField = document.getElementById(`project${projectCounter}`);
-        projectField.remove();
-        projectCounter--;
-    }
 }
 
 function generatePDF() {
     const { jsPDF } = window.jspdf;
     const doc = new jsPDF();
     const content = document.getElementById("resumePreview").innerText;
-    
-    // This is a basic way to set text to bold and increase size
+
     doc.setFontSize(20); 
     doc.setFont("times", "bold");
-    
     doc.text(content, 10, 10);
     doc.save("resume.pdf");
 }
 
 function generateWord() {
-    // You'd use the `docx` library here. It's a bit extensive 
-    // to show a full example within this format. But it involves 
-    // creating a document, adding paragraphs with content, 
-    // and then saving that as a .docx file.
+    // Placeholder: For a full-fledged Word generation solution, you'd integrate with the 'docx' library.
+    alert('Generating Word document is a more advanced feature and requires integration with the docx library.');
 }
 
-// ... Rest of the script content ...
-             
-
-function generatePDF() {
-    const { jsPDF }
-    
+// Initialize by adding the initial fields.
+addEducationField();
+addProjectField();
