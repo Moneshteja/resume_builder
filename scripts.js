@@ -1,5 +1,5 @@
-let educationCounter = 1;  // Start from 1 due to the initial field
-let projectCounter = 1;    // Same here
+let educationCounter = 1;  
+let projectCounter = 1;   
 
 function addEducationField() {
     educationCounter++;
@@ -29,7 +29,7 @@ function addProjectField() {
     document.getElementById('dynamicProjectFields').appendChild(container);
 }
 
-function generateResume(event) {
+function generateResume() {
     let resumeOutput = "";
 
     const fullName = document.getElementById("fullName").value;
@@ -73,16 +73,18 @@ function generateResume(event) {
     document.getElementById("resumePreview").innerHTML = resumeOutput;
 }
 
-function generatePDF() {
-    // For this function, you would need a library like jsPDF integrated 
-    // This is just a basic implementation
-    const { jsPDF } = window.jspdf;
-    const doc = new jsPDF();
-    doc.text(document.getElementById("resumePreview").innerText, 10, 10);
-    doc.save("resume.pdf");
+function updateTemplate() {
+    // This function can be used to apply different templates. Placeholder for now.
+    const template = document.getElementById("templateSelection").value;
+    if(template === "template1") {
+        // apply first template styles
+    } else if(template === "template2") {
+        // apply second template styles
+    } else if(template === "template3") {
+        // apply third template styles
+    }
 }
 
-// We keep the initial function calls to add default fields
-addEducationField();
-addProjectField();
-        
+function generatePDF() {
+    const { jsPDF }
+    
