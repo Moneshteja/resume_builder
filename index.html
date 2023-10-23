@@ -6,100 +6,53 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Advanced Resume Builder</title>
     <link rel="stylesheet" href="styles.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
 </head>
 
 <body>
-
-<h2>Resume Builder</h2>
-
-<form id="resumeData" onsubmit="generateResume(event);">
-
-    <!-- Personal Details -->
-    <div>
+    <h2>Resume Builder</h2>
+    <form id="resumeData">
+        <!-- Personal Details -->
         <label for="fullName">Full Name:</label>
-        <input type="text" id="fullName" placeholder="Full Name">
-    </div>
-    <div>
+        <input type="text" id="fullName">
+
         <label for="email">Email:</label>
-        <input type="text" id="email" placeholder="Email">
-    </div>
-    <div>
-        <label for="image">Upload Image:</label>
+        <input type="text" id="email">
+
+        <label for="image">Image:</label>
         <input type="file" id="image">
-    </div>
-    <div>
+
         <label for="languages">Languages:</label>
-        <input type="text" id="languages" placeholder="e.g. English (Fluent)">
-    </div>
-    <div>
+        <textarea id="languages"></textarea>
+
         <label for="skills">Skills:</label>
-        <input type="text" id="skills" placeholder="e.g. Python, Web Development">
-    </div>
+        <textarea id="skills"></textarea>
 
-    <!-- Education -->
-    <div id="educationSection">
+        <!-- Education Section -->
         <h4>Education</h4>
-        <div id="dynamicEducationFields">
-            <div id="education1">
-                <label>Degree/School:</label>
-                <input type="text" id="degree1">
-                <label>Institution/College Name:</label>
-                <input type="text" id="institution1">
-                <label>Pass Percentage:</label>
-                <input type="text" id="percentage1">
-            </div>
-        </div>
+        <div id="dynamicEducationFields"></div>
+        <button type="button" onclick="addEducationField()">Add Education</button>
+        <button type="button" onclick="deleteEducationField()">Delete Last Education</button>
 
-<!-- For Education and Projects, after each added section, add: -->
-<button type="button" onclick="deleteEducationField(educationCounter)">Delete Last Education</button>
-<button type="button" onclick="deleteProjectField(projectCounter)">Delete Last Project</button>
-
-
-        
-        <button type="button" onclick="addEducationField()">Add Another Education</button>
-    </div>
-
-    <!-- Projects -->
-    <div id="projectsSection">
+        <!-- Project Section -->
         <h4>Projects</h4>
-        <div id="dynamicProjectFields">
-            <div id="project1">
-                <label>Project Name:</label>
-                <input type="text" id="projectName1">
-                <label>Description:</label>
-                <textarea id="projectDesc1"></textarea>
-            </div>
-        </div>
-        <button type="button" onclick="addProjectField()">Add Another Project</button>
-    </div>
+        <div id="dynamicProjectFields"></div>
+        <button type="button" onclick="addProjectField()">Add Project</button>
+        <button type="button" onclick="deleteProjectField()">Delete Last Project</button>
 
-    <!-- Achievements -->
-    <div>
-        <label for="achievements">Achievements (Enter each achievement on a new line):</label>
-        <textarea id="achievements" rows="5" placeholder="List your achievements, one per line"></textarea>
-    </div>
+        <!-- Achievements -->
+        <label for="achievements">Achievements:</label>
+        <textarea id="achievements"></textarea>
 
-    <button type="button" onclick="generateResume()">Preview</button>
+        <button type="button" onclick="generateResume()">Preview</button>
+        <button type="button" onclick="generatePDF()">Generate PDF</button>
+        <button type="button" onclick="generateWord()">Generate Word</button>
+    </form>
 
-</form>
+    <h2>Resume Preview</h2>
+    <div id="resumePreview"></div>
 
-<h2>Resume Preview</h2>
-<div>
-    <label for="templateSelection">Select a template:</label>
-    <select id="templateSelection" onchange="updateTemplate()">
-        <option value="template1">Template 1</option>
-        <option value="template2">Template 2</option>
-        <option value="template3">Template 3</option>
-    </select>
-</div>
-
-<div id="resumePreview" style="border: 1px solid #ddd; padding: 10px; margin-top: 20px;"></div>
-
-<button onclick="generatePDF()">Generate PDF</button>
-
-<script src="scripts.js"></script>
-
+    <script src="scripts.js"></script>
 </body>
-    </html>
-            
+
+        </html>
+        
