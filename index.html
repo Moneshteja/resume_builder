@@ -5,10 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Advanced Resume Builder</title>
-    <style>
-        /* [CSS for general styling, input page and templates] */
-        /* ... Rest of the CSS from previous example ... */
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
@@ -16,126 +13,24 @@
 <h2>Resume Builder</h2>
 
 <form id="resumeData" onsubmit="generateResume(event); return false;">
-    <!-- Personal Details -->
-    <!-- ... Rest of the Personal Details Fields ... -->
-
-    <!-- Education -->
-    <div id="educationSection">
-        <h4>Education</h4>
-        <div id="dynamicEducationFields"></div>
-        <button type="button" onclick="addEducationField()">Add Another</button>
-    </div>
-
-    <!-- Achievements -->
-    <div>
-        <label for="achievements">Achievements (Enter each achievement on a new line):</label>
-        <textarea id="achievements" rows="5" placeholder="List your achievements, one per line"></textarea>
-    </div>
-
-    <!-- Projects -->
-    <div id="projectsSection">
-        <h4>Projects</h4>
-        <div id="dynamicProjectFields"></div>
-        <button type="button" onclick="addProjectField()">Add Another</button>
-    </div>
-
-    <!-- Template Selection -->
-    <!-- ... Template Dropdown ... -->
-
-    <button type="submit">Preview</button>
+    <!-- ... Entire Form Here ... -->
 </form>
 
 <h2>Resume Preview</h2>
-<!-- ... Template Selection and Resume Preview Container ... -->
+<div>
+    <label for="templateSelection">Select a template:</label>
+    <select id="templateSelection" onchange="updateTemplate()">
+        <option value="template1">Template 1</option>
+        <option value="template2">Template 2</option>
+        <option value="template3">Template 3</option>
+    </select>
+</div>
+
+<div id="resumePreview" style="border: 1px solid #ddd; padding: 10px; margin-top: 20px;"></div>
 
 <button onclick="generatePDF()">Generate PDF</button>
 
-<script>
-    let educationCounter = 0;
-    let projectCounter = 0;
-
-    function addEducationField() {
-        educationCounter++;
-        const container = document.getElementById("dynamicEducationFields");
-        container.innerHTML += `
-            <div id="education${educationCounter}">
-                <label>Degree/School:</label>
-                <input type="text" id="degree${educationCounter}">
-                <label>Institution/College Name:</label>
-                <input type="text" id="institution${educationCounter}">
-                <label>Pass Percentage:</label>
-                <input type="text" id="percentage${educationCounter}">
-            </div>
-        `;
-    }
-
-    function addProjectField() {
-        projectCounter++;
-        const container = document.getElementById("dynamicProjectFields");
-        container.innerHTML += `
-            <div id="project${projectCounter}">
-                <label>Project Name:</label>
-                <input type="text" id="projectName${projectCounter}">
-                <label>Description:</label>
-                <textarea id="projectDesc${projectCounter}"></textarea>
-            </div>
-        `;
-    }
-
-    function generateResume() {
-        // Collect personal details, template, and format resume
-        // Collect education details
-        let educationList = '';
-        for (let i = 1; i <= educationCounter; i++) {
-            let degree = document.getElementById(`degree${i}`).value;
-            let institution = document.getElementById(`institution${i}`).value;
-            let percentage = document.getElementById(`percentage${i}`).value;
-            educationList += `<li>${degree} from ${institution} with ${percentage}%</li>`;
-        }
-
-        // Collect project details
-        let projectList = '';
-        for (let i = 1; i <= projectCounter; i++) {
-            let projectName = document.getElementById(`projectName${i}`).value;
-            let projectDesc = document.getElementById(`projectDesc${i}`).value;
-            projectList += `<h4>${projectName}</h4><p>${projectDesc}</p>`;
-        }
-
-        // Collect achievements
-        let achievements = document.getElementById("achievements").value.split('\n');
-        let achievementsList = achievements.map(ach => `<li>${ach}</li>`).join('');
-
-        // Display everything in preview
-        let previewDiv = document.getElementById("resumePreview");
-        previewDiv.innerHTML = `
-            <img src="${URL.createObjectURL(document.getElementById('image').files[0])}" alt="${document.getElementById('fullName').value}" width="100">
-            <h1>${document.getElementById('fullName').value}</h1>
-            <p>Email: ${document.getElementById('email').value}</p>
-            <p>Language Skills: ${document.getElementById('languageSkills').value}</p>
-            <h3>Education:</h3>
-            <ul>${educationList}</ul>
-            <h3>Achievements:</h3>
-            <ul>${achievementsList}</ul>
-            <h3>Projects:</h3>
-            ${projectList}
-        `;
-    }
-
-    function generatePDF() {
-        // Simple print window for PDF generation
-        const printWindow = window.open('', '', 'width=600,height=600');
-        printWindow.document.write('<html><head><title>Print Resume</title></head><body>');
-        printWindow.document.write(document.getElementById("resumePreview").innerHTML);
-        printWindow.document.write('</body></html>');
-        printWindow.document.close();
-        printWindow.print();
-    }
-
-    // Initialize with one field each
-    addEducationField();
-    addProjectField();
-
-</script>
+<script src="scripts.js"></script>
 
 </body>
 </html>
