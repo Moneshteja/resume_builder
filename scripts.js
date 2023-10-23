@@ -1,4 +1,4 @@
-let educationCounter = 1;  // Starts from 1 due to the initial field
+let educationCounter = 1;  // Start from 1 due to the initial field
 let projectCounter = 1;    // Same here
 
 function addEducationField() {
@@ -67,5 +67,22 @@ function generateResume(event) {
         const projectName = document.getElementById(`projectName${i}`).value;
         const projectDesc = document.getElementById(`projectDesc${i}`).value;
 
-        resumeOutput += `<h3
+        resumeOutput += `<h3>${projectName}</h3><p>${projectDesc}</p>`;
+    }
+
+    document.getElementById("resumePreview").innerHTML = resumeOutput;
+}
+
+function generatePDF() {
+    // For this function, you would need a library like jsPDF integrated 
+    // This is just a basic implementation
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+    doc.text(document.getElementById("resumePreview").innerText, 10, 10);
+    doc.save("resume.pdf");
+}
+
+// We keep the initial function calls to add default fields
+addEducationField();
+addProjectField();
         
